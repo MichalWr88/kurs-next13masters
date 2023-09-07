@@ -13,14 +13,50 @@
 		"next/core-web-vitals"
 	],
 	"rules": {
-		// sort imports
-		"import/order": "error",
+		"no-const-assign": "error",
+		"no-else-return": "error",
+		"no-useless-return": "error",
+		"no-func-assign": "warn",
+		"no-var": "error",
+		"no-cond-assign": "error",
+		"arrow-body-style": "warn",
+		"no-constant-condition": "error",
+		"no-dupe-args": "error",
+		"no-setter-return": "error",
+		"no-duplicate-imports": "error",
+		// "sort-imports":"error",
+		"no-unused-vars": [
+		  "error",
+		  { "vars": "all", "args": "after-used", "ignoreRestSiblings": false }
+		],
+		"import/order": [
+			"error",
+			{
+			  "groups": [
+				"builtin",
+				"external",
+				"parent",
+				"sibling",
+				"index",
+				"object",
+				"type"
+			  ],
+			  "pathGroups": [
+				{
+				  "pattern": "@/**/**",
+				  "group": "parent",
+				  "position": "before"
+				}
+			  ],
+			  "alphabetize": { "order": "asc" }
+			}
+		  ],
 
 		// no let exports
 		"import/no-mutable-exports": "error",
 
 		"import/no-cycle": "error",
-		"import/no-default-export": "error",
+		// "import/no-default-export": "error",
 
 		// allow {} even though it's unsafe but comes handy
 		"@typescript-eslint/ban-types": [

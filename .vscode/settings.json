@@ -1,7 +1,9 @@
 {
+	"scss.lint.unknownAtRules": "ignore",
+	"editor.tabSize": 2,
 	"typescript.tsdk": "node_modules/typescript/lib",
 	"editor.formatOnSave": true,
-	"editor.defaultFormatter": "esbenp.prettier-vscode",
+	// "editor.defaultFormatter": "esbenp.prettier-vscode",
 	"editor.codeActionsOnSave": {
 		"source.fixAll": true
 	},
@@ -9,8 +11,10 @@
 	"graphql-config.load.configName": "graphql",
 	"files.associations": {
 		"*.css": "tailwindcss"
+		// "*.scss": "tailwindcss"
 	},
 	"editor.quickSuggestions": {
 		"strings": true
-	}
+	},
+	"cSpell.words": ["cond", "cssanimista", "kenburns", "testid", "webp"]
 }
