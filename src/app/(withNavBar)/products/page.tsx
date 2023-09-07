@@ -25,7 +25,7 @@ const PageProducts = async () => {
 	return (
 		<div>
 			<h1>Products list</h1>
-			<ul>
+			<ul data-testid="products-list">
 				{products.map((item) => {
           const {id, description,category,image,title} = item
 					return (
@@ -43,7 +43,7 @@ const PageProducts = async () => {
             />
 								<figcaption className="row">
 									<div className="row justify-between">
-										<div>{title}</div>
+										<h3>{title}</h3>
 										<div>price</div>
 									</div>
 									<div className="row justify-between">
