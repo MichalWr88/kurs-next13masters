@@ -6,7 +6,7 @@ type Props = {
 
 const Body = ({ children }: Props) => (
 	<body
-		className={`flex h-screen w-screen flex-col content-center items-center  globalBg`}
+		className={`flex h-screen w-screen flex-col content-center items-center text-brand-font-color  globalBg`}
 	>
 		{children}
 	</body>
