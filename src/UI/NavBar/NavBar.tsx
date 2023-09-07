@@ -1,6 +1,6 @@
-import Link from "next/link";
 import { headers } from "next/headers";
-
+import Link from "next/link";
+import LinkMenu from "./LinkMenu";
 
 type NavElem = {
 	id: number;
@@ -36,32 +36,22 @@ const NavBar = async () => {
 
 	const navList: Array<NavElem> = [
 		...staticLink,
-		...categories.map((cat, index) => {
-			return {
-				id: Number(`0.${index}`),
-				path: encodeURI(cat),
-				label: cat,
-			};
-		}),
+		...categories.map((cat, index) => ({
+			id: Number(`0.${index}`),
+			path: encodeURI(cat),
+			label: cat,
+		})),
 	].sort((a, b) => b.id - a.id);
 
 	return (
-		<header className="sticky top-0 bg-slate-400">
+		<header className="bg-brand-color-3 sticky top-0">
 			<div className="flex justify-center p-4">
 				<nav className="container flex h-8">
-					{navList.map((nav) => {
-						return (
-							<Link href={nav.path} key={`nav-${nav.path}`}>
-								<div
-									className={`flex basis-60 justify-around rounded-md  border p-2 hover:bg-yellow-700 ${
-										fullUrl.includes(nav.label.toLowerCase()) ? "bg-red-500" : ""
-									}`}
-								>
-									{nav.label}
-								</div>
-							</Link>
-						);
-					})}
+					{navList.map((nav) => (
+						<Link href={nav.path} key={`nav-${nav.path}`}>
+							<LinkMenu label={nav.label} path={nav.path}/>
+						</Link>
+					))}
 				</nav>
 			</div>
 		</header>
