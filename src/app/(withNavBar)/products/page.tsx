@@ -23,7 +23,7 @@ const PageProducts = async () => {
 		.then((json: Array<Product>) => json);
 
 	return (
-		<div>
+		<>
 			<h1>Products list</h1>
 			<ul data-testid="products-list">
 				{products.map((item) => {
@@ -56,7 +56,7 @@ const PageProducts = async () => {
 					);
 				})}
 			</ul>
-		</div>
+		</>
 	);
 };
 

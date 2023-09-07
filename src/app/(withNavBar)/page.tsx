@@ -1,7 +1,7 @@
 import Image from "next/image";
 export default function Home() {
 	return (
-		<div className="flex h-full items-center justify-around">
+		<div className="flex h-full items-center justify-around mainWrapper">
 			<h1 className="w-64 rounded-xl bg-brand-font-color p-8 text-center text-6xl uppercase text-brand-color-2">
 				Online Shop
 			</h1>
