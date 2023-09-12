@@ -67,7 +67,6 @@
 				}
 			}
 		],
-
 		"@typescript-eslint/consistent-type-imports": [
 			"error",
 			{
