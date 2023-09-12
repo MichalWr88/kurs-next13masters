@@ -1,5 +1,5 @@
 import { Suspense } from "react";
-import RecommendedProducts from "@/UI/RecomendedProducts/RecommendedProducts";
+import RecommendedProducts from "@/UI/RecommendedProducts/RecommendedProducts";
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
 	return (
