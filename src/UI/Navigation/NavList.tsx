@@ -1,11 +1,12 @@
-import Link from "next/link";
-import LinkMenu from "./LinkMenu";
-
+import ActiveLink from "./ActiveLink";
+import type { Route } from "next";
+import type { UrlObject } from "url";
 type NavElem = {
 	id: number;
-	path: string;
+	path: UrlObject | Route<string>;
 	label: string;
 };
+
 const staticLink: Array<NavElem> = [
 	{
 		id: 1,
@@ -15,7 +16,7 @@ const staticLink: Array<NavElem> = [
 	{
 		id: 1,
 		path: "/products",
-		label: "Products",
+		label: "All",
 	},
 	{
 		id: -1,
@@ -30,18 +31,20 @@ const NavList = async () => {
 
 	const navList: Array<NavElem> = [
 		...staticLink,
-		...categories.map((cat, index) => ({
-			id: Number(`0.${index}`),
-			path: encodeURI(cat),
-			label: cat,
-		})),
+		...categories.map(
+			(cat, index): NavElem => ({
+				id: Number(`0.${index}`),
+				path: `/categories/${encodeURI(cat)}` as Route<string>,
+				label: cat,
+			}),
+		),
 	].sort((a, b) => b.id - a.id);
 	return (
 		<>
 			{navList.map((nav) => (
-				<Link href={nav.path} key={`nav-${nav.path}`}>
-					<LinkMenu label={nav.label} path={nav.path} />
-				</Link>
+				<ActiveLink key={`nav-${encodeURI(nav.label)}`} href={nav.path}>
+					{nav.label}
+				</ActiveLink>
 			))}
 		</>
 	);
