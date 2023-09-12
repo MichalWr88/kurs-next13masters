@@ -16,5 +16,5 @@
 	"editor.quickSuggestions": {
 		"strings": true
 	},
-	"cSpell.words": ["cond", "cssanimista", "kenburns", "testid", "webp"]
+	"cSpell.words": ["clsx", "cond", "cssanimista", "kenburns", "testid", "webp"]
 }
