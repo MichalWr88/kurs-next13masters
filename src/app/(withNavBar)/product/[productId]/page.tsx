@@ -1,20 +1,23 @@
 import ProductImg from "@/UI/Product/ProductImg";
+import { type ProductList } from "@/models/products";
 import { getProductById, getProductsList } from "@/providers/restApiProvider/restApiProvider";
+import { prodOnly } from "@/utils";
 
 export const generateStaticParams = async () => {
-	const products = await getProductsList({ take: "50" });
-
+	const products = await prodOnly<ProductList>(getProductsList({ take: "50" }));
+	console.log("product", products);
 	return products.map((prod) => prod.id);
 };
+
+
 
 const PageProduct = async ({ params: { productId } }: { params: { productId: string } }) => {
 	const product = await getProductById(productId);
 	return (
-		<section className="flex p-3 justify-center ">
-      <div className="relative h-96">
-
-			<ProductImg product={product} />
-      </div>
+		<section className="flex justify-center p-3 ">
+			<div className="relative h-96">
+				<ProductImg product={product} />
+			</div>
 			<header>
 				<h1>{product.title}</h1>
 			</header>
