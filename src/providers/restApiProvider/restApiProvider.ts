@@ -2,7 +2,7 @@ import { URLSearchParams } from "url";
 import { type Product, type ProductList } from "@/models/products";
 const basePath = "https://naszsklep-api.vercel.app/api";
 
-type SearchParams = {
+export type SearchParams = {
 	take?: string;
 	offset?: string;
 };
@@ -13,7 +13,6 @@ export const getProductsList = async (searchParams?: SearchParams) => {
 	const data = new URLSearchParams();
 
 	Object.entries(params).forEach(([key, value]) => data.append(key, value.toString()));
-
 	const resp = await fetch(`${basePath}/products?${data.toString()}`)
 		.then((res) => res.json())
 		.then((json: ProductList) => json);

@@ -14,7 +14,7 @@ const ProductPage = async ({
 }: {
 	params: { pageTakeNumber: string };
 }) => {
-	const products = await getProductsList({ offset: pageTakeNumber, take: "20" });
+	const products = await getProductsList({ offset: (20*(Number(pageTakeNumber)-1)).toString(), take: "20" });
 
 	return (
 		<>
