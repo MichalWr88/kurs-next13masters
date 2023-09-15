@@ -11,6 +11,7 @@ export const generateStaticParams = async () => {
 
 
 const PageProduct = async ({ params: { productId } }: { params: { productId: string } }) => {
+	
 	const product = await getProductById(productId);
 	return (
 		<section className="flex justify-center p-3 ">
