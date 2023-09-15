@@ -1,7 +1,7 @@
 /* eslint-disable arrow-body-style */
 
-export const prodOnly = <T extends unknown[]>(callback: Promise<T>): Promise<T | never[]> => {
-	return process.env.NODE_ENV === "production" ? callback : Promise.resolve([]);
+export const prodOnly = <T>(callback: Promise<T>, returnData: T): Promise<T> => {
+	return process.env.NODE_ENV === "production" ? callback : Promise.resolve(returnData);
 };
 
 // type ReturnPromiseType2<T extends (...args: unknown[]) => Promise<unknown>> = T extends (
@@ -14,6 +14,7 @@ export const prodOnly = <T extends unknown[]>(callback: Promise<T>): Promise<T |
 // 	? Promise<R>
 // 	: Promise<unknown>;
 
+type ReturnType<T> = T extends unknown[] ? T : T;
 // type PromiseReturnType<T> = T extends Promise<infer Return> ? Return : T;
 
 // export const generateMetadata = prodOnly(async () => {});

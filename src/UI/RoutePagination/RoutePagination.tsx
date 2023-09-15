@@ -15,7 +15,7 @@ type Props= {
 	siblingCount?: number;
 	currentPage: number;
 	pageSize: number;
-	className: string;
+
 };
 const RoutePagination = (props: Props) => {
 	

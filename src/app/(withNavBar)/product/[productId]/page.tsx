@@ -1,11 +1,10 @@
 import ProductImg from "@/UI/Product/ProductImg";
-import { type ProductList } from "@/models/products";
+
 import { getProductById, getProductsList } from "@/providers/restApiProvider/restApiProvider";
 import { prodOnly } from "@/utils";
 
 export const generateStaticParams = async () => {
-	const products = await prodOnly<ProductList>(getProductsList({ take: "50" }));
-	console.log("product", products);
+	const products = await prodOnly(getProductsList({ take: "50" }),[]);
 	return products.map((prod) => prod.id);
 };
 
