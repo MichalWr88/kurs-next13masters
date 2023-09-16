@@ -16,7 +16,12 @@ const staticLink: Array<NavElem> = [
 	{
 		id: 1,
 		path: "/products",
-		label: "All",
+		label: "shop",
+	},
+	{
+		id: 1,
+		path: "/productsssad",
+		label: "blog",
 	},
 	{
 		id: 1,
@@ -27,6 +32,11 @@ const staticLink: Array<NavElem> = [
 		id: -1,
 		path: "/about",
 		label: "About",
+	},
+	{
+		id: -1,
+		path: "/about",
+		label: "contacts",
 	},
 ];
 const NavList = async () => {

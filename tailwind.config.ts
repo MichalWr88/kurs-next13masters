@@ -23,11 +23,11 @@ const config: Config = {
       indigo: colors.indigo,
       yellow: colors.yellow,
       neutral: colors.neutral,
-      "brand-font-color": "#590118",
+      "brand-font-color": "#120203",
       "brand-color-2": "#BF9E60",
       "brand-color-3": "#D9D8D7",
       "brand-color-4": "#CCC3C6",
-      "brand-bg-color": "#EEF2F3",
+      "brand-bg-color": "#ffffff",
     },
 		extend: {
 			backgroundImage: {
@@ -39,3 +39,11 @@ const config: Config = {
 	plugins: [],
 };
 export default config;
+
+/* 
+    "brand-font-color": "#590118",
+      "brand-color-2": "#BF9E60",
+      "brand-color-3": "#D9D8D7",
+      "brand-color-4": "#CCC3C6",
+      "brand-bg-color": "#EEF2F3",
+*/

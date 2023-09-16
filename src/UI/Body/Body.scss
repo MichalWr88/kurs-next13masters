@@ -1,27 +1,25 @@
 .globalBg {
 	position: relative;
-  overflow: hidden;
-  z-index: 1;
+	overflow: hidden;
+	z-index: 1;
 	&:after {
-    @extend .kenburnsTop;
-    opacity: 0.7;
-    filter:brightness(30%);
+		@extend .kenburnsTop;
 		position: absolute;
-    z-index: -1;
+		z-index: -1;
 		content: "";
 		top: 0;
 		left: 0;
 		right: 0;
 		bottom: 0;
-    background-image: url("/bg.webp");
-    background-repeat: no-repeat;
-    background-size: cover;
-  background-position: center;
+		background-image: url("/bg1.png");
+		background-repeat: no-repeat;
+		background-size: cover;
+		background-position: center;
 	}
 }
 
 .kenburnsTop {
-	animation: kenburns-top 50s cubic-bezier(0.455, 0.030, 0.515, 0.955) infinite alternate both;
+	animation: kenburns-top 50s cubic-bezier(0.455, 0.03, 0.515, 0.955) infinite alternate both;
 }
 
 /* ----------------------------------------------
@@ -45,12 +43,28 @@
 		transform: scale(1.25) translateY(-15px);
 		transform-origin: top;
 	}
-  50% {
-    transform: scale(1) translate(0, 0);
-    transform-origin: 16% 84%;
-  }
-  100% {
-    transform: scale(1.25) translate(-20px, 15px);
-    transform-origin: left bottom;
-  }
+	50% {
+		transform: scale(1) translate(0, 0);
+		transform-origin: 16% 84%;
+	}
+	100% {
+		transform: scale(1.25) translate(-20px, 15px);
+		transform-origin: left bottom;
+	}
+}
+
+.textShadow {
+	text-shadow:
+		-4px -4px 0px rgba(255, 255, 255, 1),
+		-4px 0px 0px rgba(255, 255, 255, 1),
+		-4px 4px 0px rgba(255, 255, 255, 1),
+		4px 4px 0px rgba(255, 255, 255, 1),
+		0px 4px 0px rgba(255, 255, 255, 1),
+		4px -4px 0px rgba(255, 255, 255, 1),
+		0px -4px 0px rgba(255, 255, 255, 1),
+		4px 0px 0px rgba(255, 255, 255, 1);
+	// background: linear-gradient(90deg, #ff0000 5%, #00B053 15%, #1BAADA 30%);
+	background-clip: text;
+	// text-stroke: 12px transparent;
+	border-top: 1px solid black;
 }

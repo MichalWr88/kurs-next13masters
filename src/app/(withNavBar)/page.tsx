@@ -1,23 +1,34 @@
-import Image from "next/image";
 export default function Home() {
 	return (
-		<div className="flex h-full items-center justify-around mainWrapper">
-			<h1 className="w-64 rounded-xl bg-brand-font-color p-8 text-center text-6xl uppercase text-brand-color-2">
-				Online Shop
-			</h1>
-			<figure>
-				<Image
-					className="rounded-lg shadow-2xl"
-					quality={20}
-					priority
-					data-testid="mePic"
-					src={"/man.jpg"}
-					alt={"man wearing a leather jacket"}
-					width={400}
-					height={200}
-				/>
-				<figcaption className="flex justify-center">our new brand</figcaption>
-			</figure>
+		<div className=" flex h-full w-full flex-col items-center  justify-center">
+			<section className="globalBg h-[calc(100vh-96px)] w-full flex flex-col justify-center items-center">
+				<h1 className=" p-3 text-center text-6xl uppercase text-brand-color-2 bg-brand-bg-color">
+					Taste on Our Hands
+				</h1>
+
+				<h2 className="flex justify-center uppercase text-brand-bg-color text-4xl mt-7">- Welcome - </h2>
+			</section>
+			<section>
+				<h2>WELLCOME TO OUR Top</h2>
+				<p>
+					Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+					labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
+					laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in
+				</p>
+				<button className="bg-brand-color-2 p-4">MAKE A RESERVATION</button>
+			</section>
+			<section className="grid grid-cols-2">
+				<div> img bedzie tu</div>
+				<article>
+					<header>MAKE EVERY COOKING TIME A SPECIAL MOMENT</header>
+					<div>icon</div>
+					<p>
+						Lorem ipsum dolor sit amet consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+						labore ezt dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
+						laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit
+					</p>
+				</article>
+			</section>
 		</div>
 	);
 }
