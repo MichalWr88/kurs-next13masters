@@ -1,7 +1,7 @@
 "use client";
 import clsx from "clsx";
 import Link from "next/link";
-import type {  Route } from "next";
+import type { Route } from "next";
 import type { ReactNode } from "react";
 
 type Props = {
@@ -9,13 +9,18 @@ type Props = {
 	href: Route;
 	blocked?: boolean;
 	selected?: boolean;
-
 };
 
-const PaginationItem = ({ children, href, blocked,selected }: Props) => {
+const PaginationItem = ({ children, href, blocked, selected }: Props) => {
 	console.log("render");
 	return (
-		<li className={clsx("mx-2 bg-brand-color-3 px-4 text-lg text-brand-font-color rounded-xl flex items-center w-14 justify-center",selected && "font-bold bg-brand-color-2")}>
+		<li
+			className={clsx(
+				"relative block rounded bg-transparent px-5  py-3 text-lg  transition-all duration-300 hover:bg-brand-color-4",
+				selected && "font-bold bg-brand-font-color text-brand-color-2 ",
+				blocked && "text-brand-color-4",
+			)}
+		>
 			{!blocked ? <Link href={href}>{children}</Link> : children}
 		</li>
 	);
