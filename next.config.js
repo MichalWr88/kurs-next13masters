@@ -13,7 +13,7 @@ const nextConfig = {
     typedRoutes: true,
   },
 	images: {
-		domains: ["fakestoreapi.com","naszsklep-api.vercel.app"],
+		domains: ["fakestoreapi.com","naszsklep-api.vercel.app","localhost"],
 	},
 };
 
