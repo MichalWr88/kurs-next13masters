@@ -21,7 +21,7 @@ const config: CodegenConfig = {
 				skipTypename: true,
 				documentMode: "string",
 
-        avoidOptionals: true,
+        // avoidOptionals: true,
         arrayInputCoercion: false,
         preResolveTypes: false,
 			},
