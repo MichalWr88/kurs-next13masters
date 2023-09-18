@@ -1,7 +1,7 @@
 "use client";
 import { clsx } from "clsx";
 import Image from "next/image";
-import { forwardRef, useMemo } from "react";
+import { Suspense, forwardRef, useMemo } from "react";
 import NavList from "../Navigation/NavList";
 type Props = {
 	hide: boolean;
@@ -30,7 +30,9 @@ const NavBar = forwardRef<HTMLDivElement, Props>(({ hide }, ref) => {
 				/>
 
 				<nav className="flex h-24 justify-center p-4">
-					<ul className="container flex ">{navList}</ul>
+					<ul className="container flex ">
+						<Suspense fallback={"loading...."}>{navList}</Suspense>
+					</ul>
 				</nav>
 			</div>
 		</header>
