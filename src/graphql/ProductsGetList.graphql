@@ -1,0 +1,47 @@
+query ProductsGetList($page: Int!, $pageSize: Int!) {
+	products(pagination: { page: $page, pageSize: $pageSize }) {
+		meta {
+			pagination {
+				...PaginationData
+			}
+		}
+		data {
+			attributes {
+				rating
+				categories {
+					data {
+						id
+						attributes {
+							name
+							slug
+						}
+					}
+				}
+				images {
+					data {
+						attributes {
+							url
+							width
+							height
+						}
+					}
+				}
+				price
+				slug
+				title
+				description
+				locale
+			}
+		}
+	}
+}
+
+query ProductsGetCountList {
+	products {
+		meta {
+			pagination {
+				...PaginationData
+			}
+		}
+	}
+}
