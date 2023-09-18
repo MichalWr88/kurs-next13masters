@@ -1,5 +1,5 @@
-query ProductsGetList($page: Int!, $pageSize: Int!) {
-	products(pagination: { page: $page, pageSize: $pageSize }) {
+query ProductsGetList($page: Int!, $pageSize: Int!, $filters: ProductFiltersInput, $sort: [String]) {
+	products(pagination: { page: $page, pageSize: $pageSize }, filters: $filters, sort: $sort) {
 		meta {
 			pagination {
 				...PaginationData
@@ -7,30 +7,7 @@ query ProductsGetList($page: Int!, $pageSize: Int!) {
 		}
 		data {
 			attributes {
-				rating
-				categories {
-					data {
-						id
-						attributes {
-							name
-							slug
-						}
-					}
-				}
-				images {
-					data {
-						attributes {
-							url
-							width
-							height
-						}
-					}
-				}
-				price
-				slug
-				title
-				description
-				locale
+				...ProductData
 			}
 		}
 	}

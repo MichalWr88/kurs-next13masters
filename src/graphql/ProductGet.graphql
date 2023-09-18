@@ -1,0 +1,36 @@
+query ProductGetBySlug($slug: String!) {
+	products(filters: { slug: { eq: $slug } }) {
+		data {
+			attributes {
+				...ProductData
+			}
+		}
+	}
+}
+
+fragment ProductData on Product {
+	rating
+	categories {
+		data {
+			id
+			attributes {
+				name
+				slug
+			}
+		}
+	}
+	images {
+		data {
+			attributes {
+				url
+				width
+				height
+			}
+		}
+	}
+	price
+	slug
+	title
+	description
+	locale
+}
