@@ -18,7 +18,7 @@ const NavBar = forwardRef<HTMLDivElement, Props>(({ hide }, ref) => {
 			)}
 			ref={ref}
 		>
-			<div className="container flex w-full justify-center">
+			<div className="container flex justify-center">
 				<Image
 					className=""
 					quality={20}
