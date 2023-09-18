@@ -12,7 +12,7 @@ type Props = {
 const ProductLink = ({ children, id }: Props) => {
 	const pathname = usePathname();
 	const [isTheSame, setIsTheSame] = useState(false);
-
+console.log(id)
 	useEffect(() => {
 		setIsTheSame(() => pathname === `/product/${id}`);
 
@@ -24,9 +24,9 @@ const ProductLink = ({ children, id }: Props) => {
 
 	return (
 		<Link
-			as={isTheSame ? undefined : "a"}
+			as={isTheSame ? undefined : `/product/${id}`}
 			className={clsx(
-				"imgWrapper relative flex h-52 w-full items-center justify-center overflow-hidden rounded-3xl",
+				"imgWrapper relative flex w-full items-center justify-center overflow-hidden rounded-3xl",
 				isTheSame && "pointer-events-none",
 			)}
 			href={isTheSame ? `/product/${id}` : {}}
