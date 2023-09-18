@@ -1,5 +1,5 @@
 "use client";
-import React, { type ReactNode, useRef, useState,useMemo } from "react";
+import React, { type ReactNode, useRef, useState, useMemo, Suspense } from "react";
 import NavBar from "../NavBar/NavBar";
 
 type Props = {
@@ -26,10 +26,13 @@ const ScrollWrapper = ({ children }: Props) => {
 			setHideNav(() => false);
 		}
 	};
-const navbar = useMemo(() => <NavBar ref={navbarRef} hide={hideNav} />, [hideNav])
+	const navbar = useMemo(() => <NavBar ref={navbarRef} hide={hideNav} />, [hideNav])
+
 
 	return (
 		<div className="relative flex h-full w-full flex-col overflow-auto " onScroll={scrollHandler}>
+	
+		
 			{navbar}
 			{children}
 		</div>
