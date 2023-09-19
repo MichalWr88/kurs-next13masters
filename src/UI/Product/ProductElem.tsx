@@ -2,8 +2,8 @@ import React from "react";
 import { type ProductDataWithCategoriesFragment } from "@/gql/graphql";
 import Rating from "../Rating/Rating";
 
-import ProductImg from "./ProductImg";
 import AppLink from "../Shared/AppLink";
+import ProductImg from "./ProductImg";
 
 type Props = {
 	product: ProductDataWithCategoriesFragment;

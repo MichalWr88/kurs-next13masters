@@ -1,9 +1,9 @@
+import { notFound } from "next/navigation";
 import ProductElem from "@/UI/Product/ProductElem";
 import ProductList from "@/UI/ProductList/ProductList";
 import { executeGraphql } from "@/api/graphQL/graphQLProvider";
 import { ProductsGetListDocument } from "@/gql/graphql";
-import { notFound } from "next/navigation";
-import React from "react";
+
 
 export const generateStaticParams = async () => [
 	{ pageTakeNumber: "1" },

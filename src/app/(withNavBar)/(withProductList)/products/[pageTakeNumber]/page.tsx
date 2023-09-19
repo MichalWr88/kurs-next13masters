@@ -1,13 +1,9 @@
-import Image from "next/image";
-import Link from "next/link";
+import { notFound } from "next/navigation";
 import React from "react";
-import ProductImg from "@/UI/Product/ProductImg";
-import Rating from "@/UI/Rating/Rating";
-import { executeGraphql } from "@/api/graphQL/graphQLProvider";
-import { ProductsGetListDocument } from "@/gql/graphql";
 import ProductElem from "@/UI/Product/ProductElem";
 import ProductList from "@/UI/ProductList/ProductList";
-import { notFound } from "next/navigation";
+import { executeGraphql } from "@/api/graphQL/graphQLProvider";
+import { ProductsGetListDocument } from "@/gql/graphql";
 
 export const generateStaticParams = async () => [
 	{ pageTakeNumber: "1" },

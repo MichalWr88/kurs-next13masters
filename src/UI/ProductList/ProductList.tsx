@@ -1,4 +1,4 @@
-import { ReactNode } from "react";
+import { type ReactNode } from "react";
 import ProductListHeader from "./ProductListHeader";
 
 const ProductList = ({ header,children }: { header: string; children: ReactNode }) => {

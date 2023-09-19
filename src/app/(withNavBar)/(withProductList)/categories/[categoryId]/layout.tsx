@@ -1,8 +1,8 @@
+import { notFound } from "next/navigation";
 import RoutePagination from "@/UI/RoutePagination/RoutePagination";
 import { executeGraphql } from "@/api/graphQL/graphQLProvider";
 import { ProductsGetCountListBySlugDocument } from "@/gql/graphql";
 import type { Route } from "next";
-import { notFound } from "next/navigation";
 
 export default async function RootLayout({
 	children,
