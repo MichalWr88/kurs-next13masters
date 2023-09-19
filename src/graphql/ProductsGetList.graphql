@@ -7,7 +7,7 @@ query ProductsGetList($page: Int!, $pageSize: Int!, $filters: ProductFiltersInpu
 		}
 		data {
 			attributes {
-				...ProductData
+				...ProductDataWithCategories
 			}
 		}
 	}
@@ -21,4 +21,13 @@ query ProductsGetCountList {
 			}
 		}
 	}
+}
+query ProductsGetCountListBySlug($slug: String!) {
+  products(filters: { categories: { slug: { eq: $slug } } }) {
+    meta {
+      pagination {
+        total
+      }
+    }
+  }
 }

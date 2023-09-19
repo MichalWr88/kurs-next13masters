@@ -2,23 +2,22 @@ query ProductGetBySlug($slug: String!) {
 	products(filters: { slug: { eq: $slug } }) {
 		data {
 			attributes {
-				...ProductData
+				...ProductDataWithCategories
 			}
 		}
 	}
 }
 
+fragment CategoryData on CategoryEntity {
+	id
+	attributes {
+		name
+		slug
+	}
+}
+
 fragment ProductData on Product {
 	rating
-	categories {
-		data {
-			id
-			attributes {
-				name
-				slug
-			}
-		}
-	}
 	images {
 		data {
 			attributes {
@@ -33,4 +32,12 @@ fragment ProductData on Product {
 	title
 	description
 	locale
+}
+fragment ProductDataWithCategories on Product {
+	...ProductData
+	categories {
+		data {
+			...CategoryData
+		}
+	}
 }

@@ -1,3 +1,14 @@
+query ProductsGetCountListByCategories {
+	products {
+		meta {
+			pagination {
+				...PaginationData
+			}
+		}
+	}
+}
+
+
 query CategoriesGetList {
 	categories {
 		data {
@@ -12,6 +23,23 @@ query CategoriesGetList {
 							url
 							height
 							width
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+query CategoriesGeBySlugWithProducts($slug: String!) {
+	categories(filters: { slug: { eq: $slug } }) {
+		data {
+			attributes {
+				slug
+				products {
+					data {
+						attributes {
+							...ProductData
 						}
 					}
 				}
