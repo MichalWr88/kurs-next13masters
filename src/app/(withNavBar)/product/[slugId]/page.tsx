@@ -3,8 +3,7 @@ import ProductImg from "@/UI/Product/ProductImg";
 import { executeGraphql } from "@/api/graphQL/graphQLProvider";
 import { ProductGetBySlugDocument } from "@/gql/graphql";
 
-import { getProductById, getProductsList } from "@/providers/restApiProvider/restApiProvider";
-import { prodOnly } from "@/utils";
+
 
 // export const generateStaticParams = async () => {
 // 	const products = await prodOnly(getProductsList({ take: "50" }),[]);

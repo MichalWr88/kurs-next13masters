@@ -1,15 +1,15 @@
-import React, { Suspense } from "react";
+import { Suspense } from "react";
 import RecommendedProducts from "@/UI/RecommendedProducts/RecommendedProducts";
 
 
+export default async function RootLayout({ children }: { children: React.ReactNode }) {
 
-const layout = ({ children }: { children: React.ReactNode }) => (
-		<div>
+	return (
+		<div className="container mb-3">
 			{children}
 			<Suspense fallback={"loading...."}>
 				<RecommendedProducts />
 			</Suspense>
 		</div>
 	);
-
-export default layout;
+}
