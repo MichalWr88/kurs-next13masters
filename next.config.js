@@ -23,6 +23,7 @@ const nextConfig = {
 			"naszsklep-api.vercel.app",
 			"localhost",
 			"kurs-next13masters.vercel.app",
+      "rv19.mikr.us:30291"
 		],
 	},
 };
