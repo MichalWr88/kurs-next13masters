@@ -2,7 +2,7 @@
 /* eslint-disable no-unused-vars */
 
 import { usePathname } from "next/navigation";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { usePagination, DOTS } from "../Pagination/usePagination";
 import PaginationItem from "./PaginationItem";
 import type { Route } from "next";
@@ -18,7 +18,16 @@ type Props = {
 const RoutePagination = (props: Props) => {
 	const pathName = usePathname();
 	const { totalCount, siblingCount = 1, pageSize, basePath } = props;
-	const [currentPage] = useState(Number([...pathName.split("/")].reverse()[0]));
+	const [currentPage, setCurrentPath] = useState(0);
+	useEffect(() => {
+		setCurrentPath(() => Number([...pathName.split("/")].reverse()[0]));
+
+		return () => {
+			setCurrentPath(() => 0);
+		};
+	}, [pathName]);
+
+	console.log([...pathName.split("/")].reverse()[0]);
 	const paginationRange = usePagination({
 		currentPage: currentPage,
 		totalCount,
