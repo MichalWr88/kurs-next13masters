@@ -1,3 +1,5 @@
+import { executeGraphql } from "@/api/graphQL/graphQLProvider";
+import { CategoriesGetListDocument } from "@/gql/graphql";
 import ActiveLink from "./ActiveLink";
 import type { Route } from "next";
 import type { UrlObject } from "url";
@@ -40,26 +42,25 @@ const staticLink: Array<NavElem> = [
 	},
 ];
 const NavList = async () => {
-	const categories = await fetch("https://fakestoreapi.com/products/categories")
-		.then((res) => res.json())
-		.then((json: Array<string>) => json);
-
+	const resp = await executeGraphql(CategoriesGetListDocument, {});
+	const categories = resp.categories?.data;
+console.log(resp)
 	const navList: Array<NavElem> = [
 		...staticLink,
-		...categories.map(
+		...(categories?.map(
 			(cat, index): NavElem => ({
 				id: Number(`0.${index}`),
-				path: `/categories/${encodeURI(cat)}` as Route<string>,
-				label: cat,
+				path: `/categories/${encodeURI(cat.attributes?.slug ?? "")}` as Route<string>,
+				label: cat.attributes?.name ?? "",
 			}),
-		),
-	].sort((a, b) => b.id - a.id);
+		) ?? []),
+	];
 	return (
 		<>
 			{navList.map((nav) => (
-				<ActiveLink key={`nav-${encodeURI(nav.label)}`} href={nav.path}>
-					{nav.label}
-				</ActiveLink>
+				<li key={`nav-${encodeURI(nav.label)}`}>
+					<ActiveLink href={nav.path}>{nav.label}</ActiveLink>
+				</li>
 			))}
 		</>
 	);
