@@ -27,7 +27,7 @@ const ProductElem = ({ product }: Props) => {
 						))}
 				</div>
 				<h2 className="title-font text-lg font-medium text-gray-900">
-					<AppLink route={`/products/${slug}`}>{title}</AppLink>
+					<AppLink route={`/product/${slug}`}>{title}</AppLink>
 				</h2>
 				<div className="flex justify-between">
 					<Rating rating={rating ?? 0} />
