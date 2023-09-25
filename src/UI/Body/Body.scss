@@ -1,22 +1,22 @@
-.globalBg {
-	position: relative;
-	overflow: hidden;
-	z-index: 1;
-	&:after {
-		@extend .kenburnsTop;
-		position: absolute;
-		z-index: -1;
-		content: "";
-		top: 0;
-		left: 0;
-		right: 0;
-		bottom: 0;
-		background-image: url("/bg1.png");
-		background-repeat: no-repeat;
-		background-size: cover;
-		background-position: center;
-	}
-}
+// .globalBg {
+// 	position: relative;
+// 	overflow: hidden;
+// 	z-index: 1;
+// 	&:after {
+// 		@extend .kenburnsTop;
+// 		position: absolute;
+// 		z-index: -1;
+// 		content: "";
+// 		top: 0;
+// 		left: 0;
+// 		right: 0;
+// 		bottom: 0;
+// 		background-image: url("/bg1.png");
+// 		background-repeat: no-repeat;
+// 		background-size: cover;
+// 		background-position: center;
+// 	}
+// }
 
 .kenburnsTop {
 	animation: kenburns-top 50s cubic-bezier(0.455, 0.03, 0.515, 0.955) infinite alternate both;
