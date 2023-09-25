@@ -16,13 +16,6 @@
 	"editor.quickSuggestions": {
 		"strings": true
 	},
-	"cSpell.words": [
-		"clsx",
-		"cond",
-		"cssanimista",
-		"kenburns",
-		"testid",
-		"webp"
-	],
+	"cSpell.words": ["clsx", "cond", "cssanimista", "eiusmod", "kenburns", "testid", "webp"],
 	"graphql-config.load.filePath": ""
 }
