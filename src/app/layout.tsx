@@ -1,9 +1,12 @@
-import { Roboto } from "next/font/google";
+import { clsx } from "clsx";
+import { Archivo_Narrow , Nanum_Pen_Script } from "next/font/google";
 import Body from "@/UI/Body/Body";
 import "./globals.scss";
 import type { Metadata } from "next";
 
-const inter = Roboto({ subsets: ["latin"], weight: "400" });
+const interRoboto = Archivo_Narrow({ subsets: ["latin"], weight: "400", variable: '--font-roboto'});
+// eslint-disable-next-line no-unused-vars, @typescript-eslint/no-unused-vars
+const interPacifico = Nanum_Pen_Script({ subsets: ["latin"], weight: "400" , variable: '--font-nanum'});
 
 export const metadata: Metadata = {
 	title: "Shop course next13 masters",
@@ -12,7 +15,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
 	return (
-		<html lang="en" className={inter.className}>
+		<html lang="en" className={clsx(interRoboto.className)}>
 			<Body>{children}</Body>
 		</html>
 	);
