@@ -12,6 +12,11 @@ const nextConfig = {
 				destination: "/categories/:slug/1", // Matched parameters can be used in the destination
 				permanent: true,
 			},
+			{
+				source: "/collections/:slug",
+				destination: "/collections/:slug/1", // Matched parameters can be used in the destination
+				permanent: true,
+			},
 		];
 	},
 	experimental: {
