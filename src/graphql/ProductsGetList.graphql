@@ -22,7 +22,7 @@ query ProductsGetCountList {
 		}
 	}
 }
-query ProductsGetCountListBySlug($slug: String!) {
+query ProductsGetCountListByCategorySlug($slug: String!) {
   products(filters: { categories: { slug: { eq: $slug } } }) {
     meta {
       pagination {
@@ -31,3 +31,13 @@ query ProductsGetCountListBySlug($slug: String!) {
     }
   }
 }
+query ProductsGetCountListByCollectionSlug($slug: String!) {
+  products(filters: { collections: { slug: { eq: $slug } } }) {
+    meta {
+      pagination {
+        total
+      }
+    }
+  }
+}
+

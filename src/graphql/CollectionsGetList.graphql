@@ -17,3 +17,13 @@ query CollectionsGetList {
 		}
 	}
 }
+query CollectionGetBySlug($slug: String!) {
+	collections(filters: { slug: { eq: $slug } }) {
+		data {
+			attributes {
+				name
+				description
+			}
+		}
+	}
+}

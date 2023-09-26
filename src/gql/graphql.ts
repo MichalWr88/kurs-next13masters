@@ -135,6 +135,7 @@ export type CategoryRelationResponseCollection = {
 export type Collection = {
   categories?: Maybe<CategoryRelationResponseCollection>;
   createdAt?: Maybe<Scalars['DateTime']['output']>;
+  description?: Maybe<Scalars['String']['output']>;
   image?: Maybe<UploadFileEntityResponse>;
   name: Scalars['String']['output'];
   products?: Maybe<ProductRelationResponseCollection>;
@@ -177,6 +178,7 @@ export type CollectionFiltersInput = {
   and?: InputMaybe<Array<InputMaybe<CollectionFiltersInput>>>;
   categories?: InputMaybe<CategoryFiltersInput>;
   createdAt?: InputMaybe<DateTimeFilterInput>;
+  description?: InputMaybe<StringFilterInput>;
   id?: InputMaybe<IdFilterInput>;
   name?: InputMaybe<StringFilterInput>;
   not?: InputMaybe<CollectionFiltersInput>;
@@ -189,6 +191,7 @@ export type CollectionFiltersInput = {
 
 export type CollectionInput = {
   categories?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
+  description?: InputMaybe<Scalars['String']['input']>;
   image?: InputMaybe<Scalars['ID']['input']>;
   name?: InputMaybe<Scalars['String']['input']>;
   products?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
@@ -1318,6 +1321,13 @@ export type CollectionsGetListQueryVariables = Exact<{ [key: string]: never; }>;
 
 export type CollectionsGetListQuery = { collections?: { data: Array<{ attributes?: { slug?: string | null, name: string, image?: { data?: { attributes?: { url: string, width?: number | null, height?: number | null } | null } | null } | null } | null }> } | null };
 
+export type CollectionGetBySlugQueryVariables = Exact<{
+  slug: Scalars['String']['input'];
+}>;
+
+
+export type CollectionGetBySlugQuery = { collections?: { data: Array<{ attributes?: { name: string, description?: string | null } | null }> } | null };
+
 export type ProductGetBySlugQueryVariables = Exact<{
   slug: Scalars['String']['input'];
 }>;
@@ -1346,12 +1356,19 @@ export type ProductsGetCountListQueryVariables = Exact<{ [key: string]: never; }
 
 export type ProductsGetCountListQuery = { products?: { meta: { pagination: { total: number, page: number, pageSize: number, pageCount: number } } } | null };
 
-export type ProductsGetCountListBySlugQueryVariables = Exact<{
+export type ProductsGetCountListByCategorySlugQueryVariables = Exact<{
   slug: Scalars['String']['input'];
 }>;
 
 
-export type ProductsGetCountListBySlugQuery = { products?: { meta: { pagination: { total: number } } } | null };
+export type ProductsGetCountListByCategorySlugQuery = { products?: { meta: { pagination: { total: number } } } | null };
+
+export type ProductsGetCountListByCollectionSlugQueryVariables = Exact<{
+  slug: Scalars['String']['input'];
+}>;
+
+
+export type ProductsGetCountListByCollectionSlugQuery = { products?: { meta: { pagination: { total: number } } } | null };
 
 export type PaginationDataFragment = { total: number, page: number, pageSize: number, pageCount: number };
 
@@ -1532,6 +1549,18 @@ export const CollectionsGetListDocument = new TypedDocumentString(`
   }
 }
     `) as unknown as TypedDocumentString<CollectionsGetListQuery, CollectionsGetListQueryVariables>;
+export const CollectionGetBySlugDocument = new TypedDocumentString(`
+    query CollectionGetBySlug($slug: String!) {
+  collections(filters: {slug: {eq: $slug}}) {
+    data {
+      attributes {
+        name
+        description
+      }
+    }
+  }
+}
+    `) as unknown as TypedDocumentString<CollectionGetBySlugQuery, CollectionGetBySlugQueryVariables>;
 export const ProductGetBySlugDocument = new TypedDocumentString(`
     query ProductGetBySlug($slug: String!) {
   products(filters: {slug: {eq: $slug}}) {
@@ -1647,8 +1676,8 @@ export const ProductsGetCountListDocument = new TypedDocumentString(`
   pageSize
   pageCount
 }`) as unknown as TypedDocumentString<ProductsGetCountListQuery, ProductsGetCountListQueryVariables>;
-export const ProductsGetCountListBySlugDocument = new TypedDocumentString(`
-    query ProductsGetCountListBySlug($slug: String!) {
+export const ProductsGetCountListByCategorySlugDocument = new TypedDocumentString(`
+    query ProductsGetCountListByCategorySlug($slug: String!) {
   products(filters: {categories: {slug: {eq: $slug}}}) {
     meta {
       pagination {
@@ -1657,4 +1686,15 @@ export const ProductsGetCountListBySlugDocument = new TypedDocumentString(`
     }
   }
 }
-    `) as unknown as TypedDocumentString<ProductsGetCountListBySlugQuery, ProductsGetCountListBySlugQueryVariables>;
+    `) as unknown as TypedDocumentString<ProductsGetCountListByCategorySlugQuery, ProductsGetCountListByCategorySlugQueryVariables>;
+export const ProductsGetCountListByCollectionSlugDocument = new TypedDocumentString(`
+    query ProductsGetCountListByCollectionSlug($slug: String!) {
+  products(filters: {collections: {slug: {eq: $slug}}}) {
+    meta {
+      pagination {
+        total
+      }
+    }
+  }
+}
+    `) as unknown as TypedDocumentString<ProductsGetCountListByCollectionSlugQuery, ProductsGetCountListByCollectionSlugQueryVariables>;
