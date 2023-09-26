@@ -1,4 +1,6 @@
 import Image from "next/image";
+import CollectionsList from "@/UI/Collections/CollectionsList";
+import RecommendedProducts from "@/UI/RecommendedProducts/RecommendedProducts";
 
 export default function Home() {
 	return (
@@ -44,6 +46,8 @@ export default function Home() {
 					</p>
 				</article>
 			</section>
+			<CollectionsList/>
+			<RecommendedProducts />
 		</div>
 	);
 }
