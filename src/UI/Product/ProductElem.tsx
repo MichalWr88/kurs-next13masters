@@ -20,13 +20,13 @@ const ProductElem = ({ product }: Props) => {
 						categories.data?.map((cat) => (
 							<h3
 								key={`categories-${cat.attributes?.slug}`}
-								className="title-font mb-1 text-xs tracking-widest text-gray-500"
+								className="mb-1 text-xs tracking-widest text-gray-500"
 							>
 								<AppLink route={`/categories/${cat.attributes?.slug}`}>{cat.attributes?.name}</AppLink>
 							</h3>
 						))}
 				</div>
-				<h2 className="title-font text-lg font-medium text-gray-900">
+				<h2 className="text-lg font-medium text-gray-900">
 					<AppLink route={`/product/${slug}`}>{title}</AppLink>
 				</h2>
 				<div className="flex justify-between">

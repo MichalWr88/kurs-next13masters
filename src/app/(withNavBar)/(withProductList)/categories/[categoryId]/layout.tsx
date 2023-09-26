@@ -1,7 +1,7 @@
 import { notFound } from "next/navigation";
 import RoutePagination from "@/UI/RoutePagination/RoutePagination";
 import { executeGraphql } from "@/api/graphQL/graphQLProvider";
-import { ProductsGetCountListBySlugDocument } from "@/gql/graphql";
+import { ProductsGetCountListByCategorySlugDocument } from "@/gql/graphql";
 import type { Route } from "next";
 
 export default async function RootLayout({
@@ -12,7 +12,7 @@ export default async function RootLayout({
 	params: { categoryId: string };
 }) {
 	// eslint-disable-next-line @typescript-eslint/no-unsafe-argument
-	const resp = await executeGraphql(ProductsGetCountListBySlugDocument, { slug: params.categoryId });
+	const resp = await executeGraphql(ProductsGetCountListByCategorySlugDocument, { slug: params.categoryId });
 	if (!resp.products) {
 		throw notFound();
 	}

@@ -1,14 +1,26 @@
+import clsx from "clsx";
 import { type ReactNode } from "react";
 import ProductListHeader from "./ProductListHeader";
 
-const ProductList = ({ header,children }: { header: string; children: ReactNode }) => {
+const ProductList = ({
+	header,
+	children,
+	classString,
+}: {
+	header: string;
+	children: ReactNode;
+	classString?: string;
+}) => {
 	console.log("test");
 	return (
-		<section className="body-font text-gray-600">
+		<section className=" text-gray-600 ">
 			<ProductListHeader header={header} />
 			<ul
 				data-testid="products-list"
-				className="grid grid-cols-1 gap-8 p-2 sm:grid-cols-3 lg:grid-cols-4"
+				className={clsx(
+					"grid grid-cols-1 justify-center gap-8 p-2 sm:grid-cols-3 lg:grid-cols-4",
+					classString,
+				)}
 			>
 				{children}
 			</ul>
