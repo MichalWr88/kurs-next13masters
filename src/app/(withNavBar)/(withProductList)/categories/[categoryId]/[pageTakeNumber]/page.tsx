@@ -4,7 +4,6 @@ import ProductList from "@/UI/ProductList/ProductList";
 import { executeGraphql } from "@/api/graphQL/graphQLProvider";
 import { ProductsGetListDocument } from "@/gql/graphql";
 
-
 export const generateStaticParams = async () => [
 	{ pageTakeNumber: "1" },
 	{ pageTakeNumber: "2" },
@@ -16,13 +15,12 @@ const CategoriesIdPage = async ({
 }: {
 	params: { categoryId: string; pageTakeNumber: string };
 }) => {
-	console.log("params", params);
 	const resp = await executeGraphql(ProductsGetListDocument, {
 		page: Number(params.pageTakeNumber),
 		pageSize: 20,
 		filters: { categories: { slug: { eq: params.categoryId } } },
 	});
-console.log("11111",resp)
+
 	if (!resp.products?.data || resp.products?.data.length === 0) {
 		throw notFound();
 	}
