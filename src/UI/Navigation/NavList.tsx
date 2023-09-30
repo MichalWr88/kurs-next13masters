@@ -42,9 +42,9 @@ const staticLink: Array<NavElem> = [
 	},
 ];
 const NavList = async () => {
-	const resp = await executeGraphql(CategoriesGetListDocument, {});
+	const resp = await executeGraphql({query: CategoriesGetListDocument});
 	const categories = resp.categories?.data;
-console.log(resp)
+
 	const navList: Array<NavElem> = [
 		...staticLink,
 		...(categories?.map(

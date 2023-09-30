@@ -12,11 +12,14 @@ export default async function RootLayout({
 	params: { categoryId: string };
 }) {
 	// eslint-disable-next-line @typescript-eslint/no-unsafe-argument
-	const resp = await executeGraphql(ProductsGetCountListByCategorySlugDocument, { slug: params.categoryId });
+	const resp = await executeGraphql({
+		query: ProductsGetCountListByCategorySlugDocument,
+		variables: { slug: params.categoryId },
+	});
 	if (!resp.products) {
 		throw notFound();
 	}
-	console.log("categories", resp.products?.meta.pagination.total);
+
 	return (
 		<>
 			{children}

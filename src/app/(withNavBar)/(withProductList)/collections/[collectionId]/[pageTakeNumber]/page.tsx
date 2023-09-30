@@ -16,11 +16,11 @@ const CategoriesIdPage = async ({
 	params: { collectionId: string; pageTakeNumber: string };
 }) => {
 	
-	const resp = await executeGraphql(ProductsGetListDocument, {
+	const resp = await executeGraphql({query:ProductsGetListDocument, variables: {
 		page: Number(params.pageTakeNumber),
 		pageSize: 20,
 		filters: { collections: { slug: { eq: params.collectionId } } },
-	});
+	}});
 	console.log("params",params,resp.products?.meta)
 	if (!resp.products?.data || resp.products?.data.length === 0) {
 		throw notFound();

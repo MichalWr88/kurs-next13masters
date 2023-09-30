@@ -7,11 +7,11 @@ import ProductList from "../ProductList/ProductList";
 
 const RecommendedProducts = async () => {
 	// const products = await getProductsList({ take: "5", offset: "100" });
-	const resp = await executeGraphql(ProductsGetListDocument, {
+	const resp = await executeGraphql({query:ProductsGetListDocument, variables: {
 		page: 1,
 		pageSize: 4,
 		sort: ["rating:DESC"],
-	});
+	}});
 	
 
 	return (

@@ -16,16 +16,22 @@ export default async function RootLayout({
 	params: { collectionId: string };
 }) {
 	// eslint-disable-next-line @typescript-eslint/no-unsafe-argument
-	const resp = await executeGraphql(ProductsGetCountListByCollectionSlugDocument, {
-		slug: params.collectionId,
+	const resp = await executeGraphql({
+		query: ProductsGetCountListByCollectionSlugDocument,
+		variables: {
+			slug: params.collectionId,
+		},
 	});
-	const collectionResp = await executeGraphql(CollectionGetBySlugDocument, {
-		slug: params.collectionId,
+	const collectionResp = await executeGraphql({
+		query: CollectionGetBySlugDocument,
+		variables: {
+			slug: params.collectionId,
+		},
 	});
 	if (!resp.products) {
 		throw notFound();
 	}
-	console.log("categories", resp.products?.meta?.pagination.total);
+
 	return (
 		<>
 			<CollectionsHeader collection={collectionResp.collections?.data[0]?.attributes} />

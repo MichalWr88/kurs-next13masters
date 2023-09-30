@@ -7,7 +7,7 @@ import AppLink from "../Shared/AppLink";
 
 
 const CollectionsList = async () => {
-	const collectionResp = await executeGraphql(CollectionsGetListDocument, {});
+	const collectionResp = await executeGraphql({query:CollectionsGetListDocument});
 
 	if (!collectionResp.collections?.data || collectionResp.collections?.data?.length === 0) {
 		return <div>not Found collections</div>;

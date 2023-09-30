@@ -16,9 +16,12 @@ const ProductPage = async ({
 }: {
 	params: { pageTakeNumber: string };
 }) => {
-	const resp = await executeGraphql(ProductsGetListDocument, {
-		page: Number(pageTakeNumber),
-		pageSize: 20,
+	const resp = await executeGraphql({
+		query: ProductsGetListDocument,
+		variables: {
+			page: Number(pageTakeNumber),
+			pageSize: 20,
+		},
 	});
 	if (!resp.products) {
 		throw notFound();
