@@ -1,6 +1,5 @@
 "use server";
 
-import { revalidatePath } from "next/cache";
 import { executeGraphql } from "@/api/graphQL/graphQLProvider";
 import { CartSetProductQuantityDocument } from "@/gql/graphql";
 
@@ -11,6 +10,6 @@ export const changeItemQuantity = async (itemId: string, quantity: number, price
 		quantity: quantity,
 		total: newTotal,
 	}});
-	// revalidatePath("/cart");
+
 	return resp.updateOrderItem?.data;
 };

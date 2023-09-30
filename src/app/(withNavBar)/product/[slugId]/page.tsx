@@ -1,6 +1,5 @@
 /* eslint-disable @typescript-eslint/no-misused-promises */
 
-import { revalidatePath } from "next/cache";
 import { cookies } from "next/headers";
 import { notFound } from "next/navigation";
 import AddCartButton from "@/UI/Buttons/AddCartButton";
@@ -30,7 +29,6 @@ const PageProduct = async ({ params: { slugId } }: { params: { slugId: string } 
 		});
 
 		await createCartItem(Number(cart.id), Number(id), product?.price || 0);
-		revalidatePath("/cart"); // in my case it is not needed to revalidate
 	}
 
 	return (
