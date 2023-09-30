@@ -58,3 +58,49 @@ export const executeGraphql = async <TResult, TVariables>({
 
 	return graphqlResponse.data;
 };
+
+export const createCart = async (): Promise<CartDataFragment> => {
+	const resp = await executeGraphql({
+		query: CartCreateDocument,
+		variables: { slug: crypto.randomUUID() },
+	});
+
+	if (!resp.createOrder || !resp.createOrder.data) {
+		throw new Error("Failed to create cart");
+	}
+
+	return resp.createOrder.data;
+};
+export const getCartBySlug = async (cartId?: string): Promise<OrderDataFragment | null> => {
+	if (!cartId) {
+		return null;
+	}
+	const resp = await executeGraphql({
+		query: CartGetBySlugDocument,
+		variables: {
+			slug: cartId,
+		},
+	});
+
+	if (!resp.orders?.data || !resp.orders?.data[0]) {
+		throw new Error("Failed to create cart");
+	}
+
+	return resp.orders.data[0];
+};
+export const createCartItem = async (orderId: number, productId: number, total: number) => {
+	const resp = await executeGraphql({
+		query: CartItemCreateDocument,
+		variables: {
+			orderId: orderId.toString(),
+			productId: productId.toString(),
+			total,
+		},
+	});
+
+	if (!resp.createOrderItem || !resp.createOrderItem.data || !resp.createOrderItem.data.attributes) {
+		throw new Error("Failed to create cart");
+	}
+
+	return resp.createOrderItem.data;
+};
