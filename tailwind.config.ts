@@ -30,8 +30,13 @@ const config: Config = {
 			"brand-bg-color": "#ffffff",
 		},
 		fontFamily: {
-			archivo: ['__Archivo_Narrow_838412', '__Archivo_Narrow_Fallback_838412', "ui-sans-serif", "system-ui"],
-			nanum: ["__Nanum_Pen_Script_410e92", "cursive", "ui-serif", "Georgia"],
+			archivo: [
+				"__Archivo_Narrow_838412",
+				"__Archivo_Narrow_Fallback_838412",
+				"ui-sans-serif",
+				"system-ui",
+			],
+			nanum: ["__Pacifico_eb57e9", "cursive", "ui-serif", "Georgia"],
 		},
 		extend: {
 			backgroundImage: {
