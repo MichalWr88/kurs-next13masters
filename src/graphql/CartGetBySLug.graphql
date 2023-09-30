@@ -1,0 +1,45 @@
+query CartGetBySlug($slug: String!) {
+	orders(publicationState: PREVIEW, filters: { slug: { eq: $slug } }) {
+		data {
+			...OrderData
+		}
+	}
+}
+
+fragment OrderData on OrderEntity {
+	id
+	attributes {
+		total
+		slug
+		order_items(publicationState: PREVIEW) {
+			data {
+				id
+				attributes {
+					quantity
+					total
+					product_variant{
+						data{
+							attributes{
+								slug
+								images{
+									data{
+										attributes{
+											width height name url
+										}
+									}
+								}
+							}
+						}
+					}
+					product {
+						data {
+							attributes {
+								...ProductData
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}

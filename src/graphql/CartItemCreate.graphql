@@ -1,0 +1,14 @@
+mutation CartItemCreate($total: Float!, $productId: ID, $orderId: ID) {
+	createOrderItem(data: { total: $total, product: $productId, order: $orderId, quantity: 1 }) {
+		data {
+      id
+			attributes {
+				product {
+					data {
+						id
+					}
+				}
+			}
+		}
+	}
+}

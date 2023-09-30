@@ -20,8 +20,12 @@ const config: CodegenConfig = {
 				defaultScalarType: "unknown",
 				skipTypename: true,
 				documentMode: "string",
-
-        // avoidOptionals: true,
+				avoidOptionals: {
+					field: true,
+					inputValue: false,
+					object: false,
+					defaultValue: true,
+				},
         arrayInputCoercion: false,
         preResolveTypes: false,
 			},

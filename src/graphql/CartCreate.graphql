@@ -1,0 +1,15 @@
+mutation CartCreate($slug: String!) {
+	createOrder(data: { total: 0, slug: $slug }) {
+		data {
+			...CartData
+		}
+	}
+}
+
+fragment CartData on OrderEntity {
+	id
+	attributes {
+		slug
+		total
+	}
+}
