@@ -6,6 +6,7 @@ import {
 	type TypedDocumentString,
 	CartGetBySlugDocument,
 	type OrderDataFragment,
+	CategoriesGetListDocument,
 } from "@/gql/graphql";
 type GraphQLResponse<T> =
 	| { data?: undefined; errors: { message: string }[] }
@@ -42,7 +43,7 @@ export const executeGraphql = async <TResult, TVariables>({
 		next,
 		headers: {
 			...headers,
-			"Authorization":`Bearer ${process.env.GRAPHQL_TOKEN}`,
+			Authorization: `Bearer ${process.env.GRAPHQL_TOKEN}`,
 			"Content-Type": "application/json",
 		},
 	});
@@ -50,7 +51,7 @@ export const executeGraphql = async <TResult, TVariables>({
 	const graphqlResponse = (await res.json()) as GraphQLResponse<TResult>;
 
 	if (graphqlResponse.errors) {
-		console.log(graphqlResponse.errors)
+		console.log(graphqlResponse.errors);
 		throw TypeError(`GraphQL Error`, {
 			cause: graphqlResponse.errors,
 		});
@@ -103,4 +104,10 @@ export const createCartItem = async (orderId: number, productId: number, total: 
 	}
 
 	return resp.createOrderItem.data;
+};
+
+export const getCategoriesList = async () => {
+	const resp = await executeGraphql({ query: CategoriesGetListDocument });
+	const categories = resp.categories?.data;
+	return categories ?? [];
 };
