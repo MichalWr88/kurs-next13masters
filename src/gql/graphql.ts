@@ -1701,6 +1701,13 @@ export type CartItemCreateMutationVariables = Exact<{
 
 export type CartItemCreateMutation = { createOrderItem: { data: { id: string | null, attributes: { product: { data: { id: string | null } | null } | null } | null } | null } | null };
 
+export type CartRemoveProductItemMutationVariables = Exact<{
+  id: Scalars['ID']['input'];
+}>;
+
+
+export type CartRemoveProductItemMutation = { deleteOrderItem: { data: { id: string | null } | null } | null };
+
 export type CartSetProductQuantityMutationVariables = Exact<{
   id: Scalars['ID']['input'];
   quantity: Scalars['Int']['input'];
@@ -1782,6 +1789,8 @@ export type ProductsGetCountListByCollectionSlugQueryVariables = Exact<{
 export type ProductsGetCountListByCollectionSlugQuery = { products: { meta: { pagination: { total: number } } } | null };
 
 export type PaginationDataFragment = { total: number, page: number, pageSize: number, pageCount: number };
+
+export type ImagesDataFragment = { data: { attributes: { url: string, width: number | null, height: number | null } | null } | null };
 
 export class TypedDocumentString<TResult, TVariables>
   extends String
@@ -1933,6 +1942,17 @@ export const PaginationDataFragmentDoc = new TypedDocumentString(`
   pageCount
 }
     `, {"fragmentName":"PaginationData"}) as unknown as TypedDocumentString<PaginationDataFragment, unknown>;
+export const ImagesDataFragmentDoc = new TypedDocumentString(`
+    fragment ImagesData on UploadFileEntityResponse {
+  data {
+    attributes {
+      url
+      width
+      height
+    }
+  }
+}
+    `, {"fragmentName":"ImagesData"}) as unknown as TypedDocumentString<ImagesDataFragment, unknown>;
 export const CartCreateDocument = new TypedDocumentString(`
     mutation CartCreate($slug: String!) {
   createOrder(data: {total: 0, slug: $slug}) {
@@ -2031,6 +2051,15 @@ export const CartItemCreateDocument = new TypedDocumentString(`
   }
 }
     `) as unknown as TypedDocumentString<CartItemCreateMutation, CartItemCreateMutationVariables>;
+export const CartRemoveProductItemDocument = new TypedDocumentString(`
+    mutation CartRemoveProductItem($id: ID!) {
+  deleteOrderItem(id: $id) {
+    data {
+      id
+    }
+  }
+}
+    `) as unknown as TypedDocumentString<CartRemoveProductItemMutation, CartRemoveProductItemMutationVariables>;
 export const CartSetProductQuantityDocument = new TypedDocumentString(`
     mutation CartSetProductQuantity($id: ID!, $quantity: Int!, $total: Float!) {
   updateOrderItem(id: $id, data: {quantity: $quantity, total: $total}) {

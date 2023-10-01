@@ -5,3 +5,12 @@ fragment PaginationData on Pagination {
 	pageCount
 }
 
+fragment ImagesData on UploadFileEntityResponse {
+	data {
+		attributes {
+			url
+			width
+			height
+		}
+	}
+}
