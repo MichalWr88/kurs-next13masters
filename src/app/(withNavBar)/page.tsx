@@ -12,6 +12,8 @@ export default function Home() {
 					src={"/bg1.png"}
 					alt={"background"}
 					fill
+					placeholder="blur" // "empty" | "blur"
+					blurDataURL="/blur.png"
 					style={{ objectFit: "cover" }}
 				/>
 				<h1 className=" z-10 bg-brand-bg-color px-3 text-center font-nanum text-9xl uppercase text-brand-color-2 rounded-xl">
