@@ -1,8 +1,18 @@
 import { notFound } from "next/navigation";
 import RoutePagination from "@/UI/RoutePagination/RoutePagination";
-import { executeGraphql } from "@/api/graphQL/graphQLProvider";
+import { executeGraphql, getCategoriesList } from "@/api/graphQL/graphQLProvider";
 import { ProductsGetCountListByCategorySlugDocument } from "@/gql/graphql";
 import type { Route } from "next";
+
+export const generateStaticParams = async () => {
+	const categories = await getCategoriesList();
+
+	return categories
+		.filter((category) => category.attributes?.slug)
+		.map((category) => ({
+			categoryId: category.attributes?.slug,
+		}));
+};
 
 export default async function RootLayout({
 	children,

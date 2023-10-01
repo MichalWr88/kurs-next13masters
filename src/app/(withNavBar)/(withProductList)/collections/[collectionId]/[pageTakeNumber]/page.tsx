@@ -4,12 +4,6 @@ import ProductList from "@/UI/ProductList/ProductList";
 import { executeGraphql } from "@/api/graphQL/graphQLProvider";
 import { ProductsGetListDocument } from "@/gql/graphql";
 
-export const generateStaticParams = async () => [
-	{ pageTakeNumber: "1" },
-	{ pageTakeNumber: "2" },
-	{ pageTakeNumber: "3" },
-];
-
 const CategoriesIdPage = async ({
 	params,
 }: {
