@@ -37,12 +37,14 @@ const ActiveLink = <T extends string>({
 	...linkProps
 }: Props<T>) => {
 	const routePath = usePathname();
+	const isActive = getIsActive({ href, exact, routePath })
 	return (
 		<Link
 			{...linkProps}
 			href={href}
+			aria-current={isActive ? "page" : undefined}
 			className={`mx-2 flex basis-60  justify-around px-2  py-1 uppercase hover:bg-brand-color-4 ${
-				getIsActive({ href, exact, routePath }) ? "border-b-4 border-brand-color-2" : ""
+				isActive ? "border-b-4 border-brand-color-2" : ""
 			}`}
 		>
 			{children}
