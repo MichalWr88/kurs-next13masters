@@ -9,11 +9,11 @@ type Props = {
 };
 
 const CollectionsHeader = async ({collection}: Props) => {
-	if (!collection || !collection.name || !collection?.description) return null;
+	if (!collection ) return null;
 	const { name, description } = collection;
 	return (
 		<section className="py-4">
-			<h3 className="text-3xl text-brand-color-2 mb-6">{name}</h3>
+			<h1 className="text-3xl text-brand-color-2 mb-6">{name}</h1>
 			<p className="text-justify">{description}</p>
 		</section>
 	);
