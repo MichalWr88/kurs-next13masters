@@ -18,7 +18,7 @@ const staticLink: Array<NavElem> = [
 	{
 		id: 1,
 		path: "/products",
-		label: "shop",
+		label: "All",
 	},
 	// {
 	// 	id: 1,
