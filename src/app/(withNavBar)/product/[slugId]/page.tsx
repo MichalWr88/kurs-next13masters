@@ -8,6 +8,17 @@ import { getOrCreateCart } from "@/api/cartProider";
 import { createCartItem, executeGraphql } from "@/api/graphQL/graphQLProvider";
 import { ProductGetBySlugDocument } from "@/gql/graphql";
 
+export const generateMetadata = async ({ params: { slugId } }: { params: { slugId: string } }) => {
+	const resp = await executeGraphql({
+		query: ProductGetBySlugDocument,
+		variables: { slug: slugId },
+	});
+	return {
+		title: resp.products?.data[0]?.attributes?.title,
+		description: resp.products?.data[0]?.attributes?.description,
+	};
+};
+
 const PageProduct = async ({ params: { slugId } }: { params: { slugId: string } }) => {
 	const resp = await executeGraphql({
 		query: ProductGetBySlugDocument,
@@ -37,6 +48,7 @@ const PageProduct = async ({ params: { slugId } }: { params: { slugId: string } 
 				<div className="grid grid-cols-2 gap-5">
 					<ProductImg product={product} />
 					<div className="">
+						<h1 className="title-font mb-1 text-3xl font-medium text-gray-900">{product.title}</h1>
 						{product.categories?.data.map((cat) => (
 							<h2
 								key={`cat-${cat.attributes?.slug}`}
@@ -46,7 +58,6 @@ const PageProduct = async ({ params: { slugId } }: { params: { slugId: string } 
 							</h2>
 						))}
 
-						<h1 className="title-font mb-1 text-3xl font-medium text-gray-900">{product.title}</h1>
 						<div className="mb-4 flex"></div>
 						<p className="leading-relaxed">{product.description}</p>
 						<div className="mb-5 mt-6 flex items-center border-b-2 border-gray-100 pb-5">
