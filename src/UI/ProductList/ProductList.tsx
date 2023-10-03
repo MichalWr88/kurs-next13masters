@@ -6,17 +6,17 @@ const ProductList = ({
 	header,
 	children,
 	classString,
+	testId,
 }: {
-	header: string;
+	header?: string;
 	children: ReactNode;
 	classString?: string;
-}) => {
-	console.log("test");
-	return (
+	testId?: string;
+}) => (
 		<section className=" text-gray-600 ">
-			<ProductListHeader header={header} />
+			<ProductListHeader header={header||""} />
 			<ul
-				data-testid="products-list"
+				data-testid={testId}
 				className={clsx(
 					"grid grid-cols-1 justify-center gap-8 p-2 sm:grid-cols-3 lg:grid-cols-4",
 					classString,
@@ -26,6 +26,5 @@ const ProductList = ({
 			</ul>
 		</section>
 	);
-};
 
 export default ProductList;

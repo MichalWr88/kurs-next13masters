@@ -28,7 +28,7 @@ const ProductPage = async ({
 	}
 
 	return (
-		<ProductList header="Products list">
+		<ProductList header="Products list" testId="products-list">
 			{resp.products?.data.map((item) => {
 				if (!item.attributes) return null;
 
