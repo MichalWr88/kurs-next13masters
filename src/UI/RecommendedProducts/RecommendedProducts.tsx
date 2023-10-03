@@ -15,9 +15,9 @@ const RecommendedProducts = async () => {
 	
 
 	return (
-		<div className="border-t-2 mt-2 pt-4 bg-brand-color-3">
+		<ul className="border-t-2 mt-2 pt-4 bg-brand-color-3" data-testid="related-products">
 
-		<ProductList header="Recommended Products">
+		<ProductList header="Recommended Products" testId="products-list">
 		{resp.products?.data.map((item) => {
 			if (!item.attributes) return null;
 
@@ -28,7 +28,7 @@ const RecommendedProducts = async () => {
 			);
 		})}
 	</ProductList>
-		</div>
+		</ul>
 	);
 };
 
