@@ -4,24 +4,38 @@ import ProductList from "@/UI/ProductList/ProductList";
 import { executeGraphql } from "@/api/graphQL/graphQLProvider";
 import { ProductsGetListDocument } from "@/gql/graphql";
 
+export const generateMetadata = async ({
+	params: { categoryId },
+}: {
+	params: { categoryId: string };
+}) => ({
+	title: categoryId,
+	description: categoryId,
+});
 
 const CategoriesIdPage = async ({
 	params,
 }: {
 	params: { categoryId: string; pageTakeNumber: string };
 }) => {
-	const resp = await executeGraphql({query:ProductsGetListDocument, variables: {
-		page: Number(params.pageTakeNumber),
-		pageSize: 20,
-		filters: { categories: { slug: { eq: params.categoryId } } },
-	}});
+	const resp = await executeGraphql({
+		query: ProductsGetListDocument,
+		variables: {
+			page: Number(params.pageTakeNumber),
+			pageSize: 20,
+			filters: { categories: { slug: { eq: params.categoryId } } },
+		},
+	});
 
 	if (!resp.products?.data || resp.products?.data.length === 0) {
 		throw notFound();
 	}
 
 	return (
-		<ProductList header="Products list">
+		<>
+		<h1>{`Products list ${params.categoryId}`}</h1>
+
+		<ProductList >
 			{resp.products?.data.map((item) => {
 				if (!item.attributes) return null;
 
@@ -32,6 +46,7 @@ const CategoriesIdPage = async ({
 				);
 			})}
 		</ProductList>
+		</>
 	);
 };
 
