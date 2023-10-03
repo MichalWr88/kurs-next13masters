@@ -1,13 +1,12 @@
-import {  type Route } from "next";
-import Image from "next/image"
+import { type Route } from "next";
+import Image from "next/image";
 import { executeGraphql } from "@/api/graphQL/graphQLProvider";
 import { CollectionsGetListDocument } from "@/gql/graphql";
 import ProductList from "../ProductList/ProductList";
 import AppLink from "../Shared/AppLink";
 
-
 const CollectionsList = async () => {
-	const collectionResp = await executeGraphql({query:CollectionsGetListDocument});
+	const collectionResp = await executeGraphql({ query: CollectionsGetListDocument });
 
 	if (!collectionResp.collections?.data || collectionResp.collections?.data?.length === 0) {
 		return <div>not Found collections</div>;
@@ -16,7 +15,7 @@ const CollectionsList = async () => {
 	return (
 		<ProductList header="Collections" classString="lg:grid-cols-3">
 			{collectionResp.collections?.data.map((collection) => {
-        const attr = collection.attributes;
+				const attr = collection.attributes;
 				return (
 					<li key={`categories-${attr?.slug}`}>
 						<AppLink route={`/collections/${attr?.slug}` as Route}>
@@ -34,15 +33,8 @@ const CollectionsList = async () => {
 									style={{ objectFit: "cover" }}
 								/>
 							)}
+							<h3 className="text-lg font-medium text-gray-900">{collection.attributes?.name}</h3>
 						</AppLink>
-						<h3
-							
-							className="text-lg font-medium text-gray-900"
-						>
-							<AppLink route={`/categories/${collection.attributes?.slug}`}>
-								{collection.attributes?.name}
-							</AppLink>
-						</h3>
 					</li>
 				);
 			})}
