@@ -8,6 +8,23 @@ import {
 } from "@/gql/graphql";
 import type { Route } from "next";
 
+export const generateMetadata = async ({
+	params: { collectionId },
+}: {
+	params: { collectionId: string };
+}) => {
+	const collectionResp = await executeGraphql({
+		query: CollectionGetBySlugDocument,
+		variables: {
+			slug: collectionId,
+		},
+	});
+	return {
+		title: collectionResp.collections?.data[0]?.attributes?.name,
+		description: collectionResp.collections?.data[0]?.attributes?.description,
+	};
+};
+
 export default async function RootLayout({
 	children,
 	params,
