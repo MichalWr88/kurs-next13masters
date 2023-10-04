@@ -5,8 +5,13 @@ import { notFound } from "next/navigation";
 import AddCartButton from "@/UI/Buttons/AddCartButton";
 import ProductImg from "@/UI/Product/ProductImg";
 import { getOrCreateCart } from "@/api/cartProider";
-import { createCartItem, executeGraphql } from "@/api/graphQL/graphQLProvider";
+import {
+	checkIsOrderItemInCart,
+	createCartItem,
+	executeGraphql,
+} from "@/api/graphQL/graphQLProvider";
 import { ProductGetBySlugDocument } from "@/gql/graphql";
+import { changeItemQuantity } from "../../cart/actions";
 
 export const generateMetadata = async ({ params: { slugId } }: { params: { slugId: string } }) => {
 	const resp = await executeGraphql({
@@ -33,11 +38,22 @@ const PageProduct = async ({ params: { slugId } }: { params: { slugId: string } 
 
 		const cart = await getOrCreateCart();
 		if (!cart.attributes?.slug || !cart.id) return;
+
 		cookies().set("cartId", cart.attributes?.slug, {
 			httpOnly: true,
 			sameSite: "lax",
 			expires: new Date(Date.now() + 1000 * 60 * 60 * 24 * 7),
 		});
+		const order = await checkIsOrderItemInCart(Number(id as string), Number(cart.id));
+
+		if (order && order.id) {
+			await changeItemQuantity(
+				order.id,
+				(order.attributes?.quantity ?? 0) + 1,
+				order.attributes?.product?.data?.attributes?.price ?? 0,
+			);
+			return;
+		}
 
 		await createCartItem(Number(cart.id), Number(id), product?.price || 0);
 	}

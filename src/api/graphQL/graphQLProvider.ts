@@ -7,6 +7,7 @@ import {
 	CartGetBySlugDocument,
 	type OrderDataFragment,
 	CategoriesGetListDocument,
+	CartItemCheckIsInCartDocument,
 } from "@/gql/graphql";
 type GraphQLResponse<T> =
 	| { data?: undefined; errors: { message: string }[] }
@@ -104,6 +105,20 @@ export const createCartItem = async (orderId: number, productId: number, total: 
 	}
 
 	return resp.createOrderItem.data;
+};
+export const checkIsOrderItemInCart = async (productId: number, cartId: number) => {
+	const resp = await executeGraphql({
+		query: CartItemCheckIsInCartDocument,
+		variables: {
+			cartId: cartId.toString(),
+			productId: productId.toString(),
+		
+		},
+	});
+
+	
+
+	return resp.orderItems?.data[0] ?? null
 };
 
 export const getCategoriesList = async () => {

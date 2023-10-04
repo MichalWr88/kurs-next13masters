@@ -870,7 +870,7 @@ export type Product = {
   localizations: Maybe<ProductRelationResponseCollection>;
   longDescription: Maybe<Scalars['String']['output']>;
   order_items: Maybe<OrderItemRelationResponseCollection>;
-  price: Maybe<Scalars['Float']['output']>;
+  price: Scalars['Float']['output'];
   product_variants: Maybe<ProductVariantRelationResponseCollection>;
   publishedAt: Maybe<Scalars['DateTime']['output']>;
   rating: Maybe<Scalars['Float']['output']>;
@@ -1679,18 +1679,26 @@ export type CartCreateMutationVariables = Exact<{
 }>;
 
 
-export type CartCreateMutation = { createOrder: { data: { id: string | null, attributes: { slug: string, total: number | null } | null } | null } | null };
+export type CartCreateMutation = { createOrder: { data: { id: string | null, attributes: { slug: string, total: number | null, order_items: { data: Array<{ id: string | null, attributes: { product: { data: { id: string | null } | null } | null } | null }> } | null } | null } | null } | null };
 
-export type CartDataFragment = { id: string | null, attributes: { slug: string, total: number | null } | null };
+export type CartDataFragment = { id: string | null, attributes: { slug: string, total: number | null, order_items: { data: Array<{ id: string | null, attributes: { product: { data: { id: string | null } | null } | null } | null }> } | null } | null };
 
 export type CartGetBySlugQueryVariables = Exact<{
   slug: Scalars['String']['input'];
 }>;
 
 
-export type CartGetBySlugQuery = { orders: { data: Array<{ id: string | null, attributes: { total: number | null, slug: string, order_items: { data: Array<{ id: string | null, attributes: { quantity: number | null, total: number | null, product_variant: { data: { attributes: { slug: string | null, images: { data: Array<{ attributes: { width: number | null, height: number | null, name: string, url: string } | null }> } | null } | null } | null } | null, product: { data: { attributes: { rating: number | null, price: number | null, slug: string, title: string, description: string | null, locale: string | null, images: { data: Array<{ attributes: { url: string, width: number | null, height: number | null } | null }> } | null } | null } | null } | null } | null }> } | null } | null }> } | null };
+export type CartGetBySlugQuery = { orders: { data: Array<{ id: string | null, attributes: { total: number | null, slug: string, order_items: { data: Array<{ id: string | null, attributes: { quantity: number | null, total: number | null, product_variant: { data: { id: string | null, attributes: { slug: string | null, images: { data: Array<{ attributes: { width: number | null, height: number | null, name: string, url: string } | null }> } | null } | null } | null } | null, product: { data: { id: string | null, attributes: { rating: number | null, price: number, slug: string, title: string, description: string | null, locale: string | null, images: { data: Array<{ attributes: { url: string, width: number | null, height: number | null } | null }> } | null } | null } | null } | null } | null }> } | null } | null }> } | null };
 
-export type OrderDataFragment = { id: string | null, attributes: { total: number | null, slug: string, order_items: { data: Array<{ id: string | null, attributes: { quantity: number | null, total: number | null, product_variant: { data: { attributes: { slug: string | null, images: { data: Array<{ attributes: { width: number | null, height: number | null, name: string, url: string } | null }> } | null } | null } | null } | null, product: { data: { attributes: { rating: number | null, price: number | null, slug: string, title: string, description: string | null, locale: string | null, images: { data: Array<{ attributes: { url: string, width: number | null, height: number | null } | null }> } | null } | null } | null } | null } | null }> } | null } | null };
+export type OrderDataFragment = { id: string | null, attributes: { total: number | null, slug: string, order_items: { data: Array<{ id: string | null, attributes: { quantity: number | null, total: number | null, product_variant: { data: { id: string | null, attributes: { slug: string | null, images: { data: Array<{ attributes: { width: number | null, height: number | null, name: string, url: string } | null }> } | null } | null } | null } | null, product: { data: { id: string | null, attributes: { rating: number | null, price: number, slug: string, title: string, description: string | null, locale: string | null, images: { data: Array<{ attributes: { url: string, width: number | null, height: number | null } | null }> } | null } | null } | null } | null } | null }> } | null } | null };
+
+export type CartItemCheckIsInCartQueryVariables = Exact<{
+  productId: Scalars['ID']['input'];
+  cartId: Scalars['ID']['input'];
+}>;
+
+
+export type CartItemCheckIsInCartQuery = { orderItems: { data: Array<{ id: string | null, attributes: { quantity: number | null, product: { data: { attributes: { price: number } | null } | null } | null } | null }> } | null };
 
 export type CartItemCreateMutationVariables = Exact<{
   total: Scalars['Float']['input'];
@@ -1732,7 +1740,7 @@ export type CategoriesGeBySlugWithProductsQueryVariables = Exact<{
 }>;
 
 
-export type CategoriesGeBySlugWithProductsQuery = { categories: { data: Array<{ attributes: { slug: string, products: { data: Array<{ attributes: { rating: number | null, price: number | null, slug: string, title: string, description: string | null, locale: string | null, images: { data: Array<{ attributes: { url: string, width: number | null, height: number | null } | null }> } | null } | null }> } | null } | null }> } | null };
+export type CategoriesGeBySlugWithProductsQuery = { categories: { data: Array<{ attributes: { slug: string, products: { data: Array<{ attributes: { rating: number | null, price: number, slug: string, title: string, description: string | null, locale: string | null, images: { data: Array<{ attributes: { url: string, width: number | null, height: number | null } | null }> } | null } | null }> } | null } | null }> } | null };
 
 export type CollectionsGetListQueryVariables = Exact<{ [key: string]: never; }>;
 
@@ -1751,13 +1759,13 @@ export type ProductGetBySlugQueryVariables = Exact<{
 }>;
 
 
-export type ProductGetBySlugQuery = { products: { data: Array<{ id: string | null, attributes: { rating: number | null, price: number | null, slug: string, title: string, description: string | null, locale: string | null, categories: { data: Array<{ id: string | null, attributes: { name: string | null, slug: string } | null }> } | null, images: { data: Array<{ attributes: { url: string, width: number | null, height: number | null } | null }> } | null } | null }> } | null };
+export type ProductGetBySlugQuery = { products: { data: Array<{ id: string | null, attributes: { rating: number | null, price: number, slug: string, title: string, description: string | null, locale: string | null, categories: { data: Array<{ id: string | null, attributes: { name: string | null, slug: string } | null }> } | null, images: { data: Array<{ attributes: { url: string, width: number | null, height: number | null } | null }> } | null } | null }> } | null };
 
 export type CategoryDataFragment = { id: string | null, attributes: { name: string | null, slug: string } | null };
 
-export type ProductDataFragment = { rating: number | null, price: number | null, slug: string, title: string, description: string | null, locale: string | null, images: { data: Array<{ attributes: { url: string, width: number | null, height: number | null } | null }> } | null };
+export type ProductDataFragment = { rating: number | null, price: number, slug: string, title: string, description: string | null, locale: string | null, images: { data: Array<{ attributes: { url: string, width: number | null, height: number | null } | null }> } | null };
 
-export type ProductDataWithCategoriesFragment = { rating: number | null, price: number | null, slug: string, title: string, description: string | null, locale: string | null, categories: { data: Array<{ id: string | null, attributes: { name: string | null, slug: string } | null }> } | null, images: { data: Array<{ attributes: { url: string, width: number | null, height: number | null } | null }> } | null };
+export type ProductDataWithCategoriesFragment = { rating: number | null, price: number, slug: string, title: string, description: string | null, locale: string | null, categories: { data: Array<{ id: string | null, attributes: { name: string | null, slug: string } | null }> } | null, images: { data: Array<{ attributes: { url: string, width: number | null, height: number | null } | null }> } | null };
 
 export type ProductsGetListQueryVariables = Exact<{
   page: Scalars['Int']['input'];
@@ -1767,7 +1775,7 @@ export type ProductsGetListQueryVariables = Exact<{
 }>;
 
 
-export type ProductsGetListQuery = { products: { meta: { pagination: { total: number, page: number, pageSize: number, pageCount: number } }, data: Array<{ attributes: { rating: number | null, price: number | null, slug: string, title: string, description: string | null, locale: string | null, categories: { data: Array<{ id: string | null, attributes: { name: string | null, slug: string } | null }> } | null, images: { data: Array<{ attributes: { url: string, width: number | null, height: number | null } | null }> } | null } | null }> } | null };
+export type ProductsGetListQuery = { products: { meta: { pagination: { total: number, page: number, pageSize: number, pageCount: number } }, data: Array<{ attributes: { rating: number | null, price: number, slug: string, title: string, description: string | null, locale: string | null, categories: { data: Array<{ id: string | null, attributes: { name: string | null, slug: string } | null }> } | null, images: { data: Array<{ attributes: { url: string, width: number | null, height: number | null } | null }> } | null } | null }> } | null };
 
 export type ProductsGetCountListQueryVariables = Exact<{ [key: string]: never; }>;
 
@@ -1812,6 +1820,18 @@ export const CartDataFragmentDoc = new TypedDocumentString(`
   attributes {
     slug
     total
+    order_items {
+      data {
+        id
+        attributes {
+          product {
+            data {
+              id
+            }
+          }
+        }
+      }
+    }
   }
 }
     `, {"fragmentName":"CartData"}) as unknown as TypedDocumentString<CartDataFragment, unknown>;
@@ -1848,6 +1868,7 @@ export const OrderDataFragmentDoc = new TypedDocumentString(`
           total
           product_variant {
             data {
+              id
               attributes {
                 slug
                 images {
@@ -1865,6 +1886,7 @@ export const OrderDataFragmentDoc = new TypedDocumentString(`
           }
           product {
             data {
+              id
               attributes {
                 ...ProductData
               }
@@ -1966,6 +1988,18 @@ export const CartCreateDocument = new TypedDocumentString(`
   attributes {
     slug
     total
+    order_items {
+      data {
+        id
+        attributes {
+          product {
+            data {
+              id
+            }
+          }
+        }
+      }
+    }
   }
 }`) as unknown as TypedDocumentString<CartCreateMutation, CartCreateMutationVariables>;
 export const CartGetBySlugDocument = new TypedDocumentString(`
@@ -1989,6 +2023,7 @@ export const CartGetBySlugDocument = new TypedDocumentString(`
           total
           product_variant {
             data {
+              id
               attributes {
                 slug
                 images {
@@ -2006,6 +2041,7 @@ export const CartGetBySlugDocument = new TypedDocumentString(`
           }
           product {
             data {
+              id
               attributes {
                 ...ProductData
               }
@@ -2033,6 +2069,28 @@ fragment ProductData on Product {
   description
   locale
 }`) as unknown as TypedDocumentString<CartGetBySlugQuery, CartGetBySlugQueryVariables>;
+export const CartItemCheckIsInCartDocument = new TypedDocumentString(`
+    query CartItemCheckIsInCart($productId: ID!, $cartId: ID!) {
+  orderItems(
+    publicationState: PREVIEW
+    filters: {product: {id: {eq: $productId}}, order: {id: {eq: $cartId}}}
+  ) {
+    data {
+      id
+      attributes {
+        quantity
+        product {
+          data {
+            attributes {
+              price
+            }
+          }
+        }
+      }
+    }
+  }
+}
+    `) as unknown as TypedDocumentString<CartItemCheckIsInCartQuery, CartItemCheckIsInCartQueryVariables>;
 export const CartItemCreateDocument = new TypedDocumentString(`
     mutation CartItemCreate($total: Float!, $productId: ID, $orderId: ID) {
   createOrderItem(

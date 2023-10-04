@@ -19,6 +19,7 @@ fragment OrderData on OrderEntity {
 					total
 					product_variant{
 						data{
+							id
 							attributes{
 								slug
 								images{
@@ -33,6 +34,7 @@ fragment OrderData on OrderEntity {
 					}
 					product {
 						data {
+							id
 							attributes {
 								...ProductData
 							}

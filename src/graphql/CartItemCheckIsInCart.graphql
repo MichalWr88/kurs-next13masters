@@ -1,0 +1,20 @@
+query CartItemCheckIsInCart($productId: ID!, $cartId: ID!) {
+	orderItems(
+		publicationState: PREVIEW
+		filters: { product: { id: { eq: $productId } }, order: { id: { eq: $cartId } } }
+	) {
+    data {
+      id
+      attributes {
+        quantity
+        product {
+          data {
+            attributes {
+              price
+            }
+          }
+        }
+      }
+    }
+	}
+}

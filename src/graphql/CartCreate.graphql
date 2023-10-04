@@ -11,5 +11,17 @@ fragment CartData on OrderEntity {
 	attributes {
 		slug
 		total
+		order_items {
+			data {
+				id
+				attributes {
+					product {
+						data {
+							id
+						}
+					}
+				}
+			}
+		}
 	}
 }
