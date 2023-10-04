@@ -30,16 +30,16 @@ const staticLink: Array<NavElem> = [
 	// 	path: "/productsssad",
 	// 	label: "Test",
 	// },
-	{
-		id: -1,
-		path: "/about",
-		label: "About",
-	},
-	{
-		id: -1,
-		path: "/about",
-		label: "contacts",
-	},
+	// {
+	// 	id: -1,
+	// 	path: "/about",
+	// 	label: "About",
+	// },
+	// {
+	// 	id: -1,
+	// 	path: "/about",
+	// 	label: "contacts",
+	// },
 ];
 const NavList = async () => {
 	const resp = await executeGraphql({query: CategoriesGetListDocument});
