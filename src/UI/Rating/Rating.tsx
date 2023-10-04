@@ -22,7 +22,7 @@ const Rating = ({ rating }: Props) => {
 				data-te-value="3"
 			>
 				{ratingStarsArray.map((fill,i) => (
-					<li key={`rating-star-${fill}-${i}`}>
+					<p key={`rating-star-${fill}-${i}`}>
 						<span
 							className={clsx("[&>svg]:h-5 [&>svg]:w-5", fill && "bg-indigo-600")}
 							data-te-rating-icon-ref
@@ -41,7 +41,7 @@ const Rating = ({ rating }: Props) => {
 								/>
 							</svg>
 						</span>
-					</li>
+					</p>
 				))}
 			</ul>
 			<span className="ml-2">{((rating * 5) / 100).toFixed(2)}</span>

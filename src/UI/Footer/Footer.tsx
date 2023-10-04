@@ -13,56 +13,38 @@ function Footer({}: Props) {
 							CATEGORIES
 						</h2>
 						<nav className="mb-10 list-none">
-							<li>
+							<p>
 								<a className="text-gray-600 hover:text-gray-800">First Link</a>
-							</li>
-							<li>
+							</p>
+							<p>
 								<a className="text-gray-600 hover:text-gray-800">Second Link</a>
-							</li>
-							<li>
+							</p>
+							<p>
 								<a className="text-gray-600 hover:text-gray-800">Third Link</a>
-							</li>
-							<li>
+							</p>
+							<p>
 								<a className="text-gray-600 hover:text-gray-800">Fourth Link</a>
-							</li>
+							</p>
 						</nav>
 					</div>
+
 					<div className="w-full px-4 md:w-1/2 lg:w-1/4">
 						<h2 className="title-font mb-3 text-sm font-medium tracking-widest text-gray-900">
 							CATEGORIES
 						</h2>
 						<nav className="mb-10 list-none">
-							<li>
+							<p>
 								<a className="text-gray-600 hover:text-gray-800">First Link</a>
-							</li>
-							<li>
+							</p>
+							<p>
 								<a className="text-gray-600 hover:text-gray-800">Second Link</a>
-							</li>
-							<li>
+							</p>
+							<p>
 								<a className="text-gray-600 hover:text-gray-800">Third Link</a>
-							</li>
-							<li>
+							</p>
+							<p>
 								<a className="text-gray-600 hover:text-gray-800">Fourth Link</a>
-							</li>
-						</nav>
-					</div>
-					<div className="w-full px-4 md:w-1/2 lg:w-1/4">
-						<h2 className="title-font mb-3 text-sm font-medium tracking-widest text-gray-900">
-							CATEGORIES
-						</h2>
-						<nav className="mb-10 list-none">
-							<li>
-								<a className="text-gray-600 hover:text-gray-800">First Link</a>
-							</li>
-							<li>
-								<a className="text-gray-600 hover:text-gray-800">Second Link</a>
-							</li>
-							<li>
-								<a className="text-gray-600 hover:text-gray-800">Third Link</a>
-							</li>
-							<li>
-								<a className="text-gray-600 hover:text-gray-800">Fourth Link</a>
-							</li>
+							</p>
 						</nav>
 					</div>
 					<div className="w-full px-4 md:w-1/2 lg:w-1/4">
