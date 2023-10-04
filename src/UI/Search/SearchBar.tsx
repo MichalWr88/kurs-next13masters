@@ -14,9 +14,9 @@ const SearchBar = () => {
 
 	// Fetch API (optional)
 	useEffect(() => {
-		console.log(debouncedValue);
-		if (debouncedValue === null) return;
+		if (debouncedValue === undefined) return;
 		if (!debouncedValue) {
+
 			router.push(`/products`);
 			return;
 		}
