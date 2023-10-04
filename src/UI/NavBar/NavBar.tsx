@@ -2,6 +2,7 @@ import { clsx } from "clsx";
 import Image from "next/image";
 import { Suspense, useMemo } from "react";
 import NavList from "../Navigation/NavList";
+import SearchBar from "../Search/SearchBar";
 import CartCount from "./CartCount";
 
 // eslint-disable-next-line react/display-name
@@ -29,6 +30,7 @@ const NavBar = () => {
 						<Suspense fallback={"loading...."}>{navList}</Suspense>
 					</ul>
 				</nav>
+				<SearchBar/>
 				<CartCount />
 			</div>
 		</header>

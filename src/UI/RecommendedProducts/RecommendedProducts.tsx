@@ -1,4 +1,3 @@
-
 import React from "react";
 import { executeGraphql } from "@/api/graphQL/graphQLProvider";
 import { ProductsGetListDocument } from "@/gql/graphql";
@@ -7,27 +6,28 @@ import ProductList from "../ProductList/ProductList";
 
 const RecommendedProducts = async () => {
 	// const products = await getProductsList({ take: "5", offset: "100" });
-	const resp = await executeGraphql({query:ProductsGetListDocument, variables: {
-		page: 1,
-		pageSize: 4,
-		sort: ["rating:DESC"],
-	}});
-	
+	const resp = await executeGraphql({
+		query: ProductsGetListDocument,
+		variables: {
+			page: 1,
+			pageSize: 4,
+			sort: ["rating:DESC"],
+		},
+	});
 
 	return (
-		<ul className="border-t-2 mt-2 pt-4 bg-brand-color-3" data-testid="related-products">
+		<ul className="mt-2 border-t-2 bg-brand-color-3 pt-4" data-testid="related-products">
+			<ProductList header="Recommended Products" testId="products-list">
+				{resp.products?.data.map((item) => {
+					if (!item.attributes) return null;
 
-		<ProductList header="Recommended Products" testId="products-list">
-		{resp.products?.data.map((item) => {
-			if (!item.attributes) return null;
-
-			return (
-				<li key={`product-${item.attributes.slug}`}>
-					<ProductElem product={item.attributes} />
-				</li>
-			);
-		})}
-	</ProductList>
+					return (
+						<li key={`product-${item.attributes.slug}`}>
+							<ProductElem product={item.attributes} />
+						</li>
+					);
+				})}
+			</ProductList>
 		</ul>
 	);
 };

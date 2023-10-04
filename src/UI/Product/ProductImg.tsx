@@ -1,7 +1,6 @@
 import Image from "next/image";
 import React from "react";
 import { type ProductDataFragment } from "@/gql/graphql";
-import AppLink from "../Shared/AppLink";
 
 type Props = {
 	product?: ProductDataFragment | null;
@@ -10,9 +9,9 @@ type Props = {
 
 const ProductImg = ({ product, fit }: Props) => {
 	if (!product) return null;
-	const { title, slug, images } = product;
+	const { title, images } = product;
 	return (
-		<AppLink route={`/product/${slug}`}>
+		<>
 			{images?.data[0] && (
 				<Image
 					className="relative h-max transition-all delay-100 duration-300 ease-in-out "
@@ -27,7 +26,7 @@ const ProductImg = ({ product, fit }: Props) => {
 					style={{ objectFit: fit }}
 				/>
 			)}
-		</AppLink>
+		</>
 	);
 };
 
