@@ -21,8 +21,8 @@ const SearchBar = () => {
 			return;
 		}
 		router.push(`/search?query=${encodeURIComponent(debouncedValue)}`);
-		// Do fetch here...
-		// Triggers when "debouncedValue" changes
+
+	// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [debouncedValue]);
 
 	return (

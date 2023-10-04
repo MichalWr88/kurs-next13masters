@@ -22,7 +22,8 @@ const IncrementProductQuantity = ({
 	return (
 		<form className="flex items-start justify-center">
 			<button
-			disabled={formStatus.pending || optimisticQuantity <= minQuantity}
+				data-testid="decrement"
+				disabled={formStatus.pending || optimisticQuantity <= minQuantity}
 				className="flex h-6 w-6 items-center justify-center border border-zinc-950 disabled:border-zinc-400 disabled:text-zinc-400"
 				type="submit"
 				// eslint-disable-next-line @typescript-eslint/no-misused-promises
@@ -33,8 +34,11 @@ const IncrementProductQuantity = ({
 			>
 				-
 			</button>
-			<span className="w-8 text-center">{optimisticQuantity}</span>
+			<span className="w-8 text-center" data-testid="quantity">
+				{optimisticQuantity}
+			</span>
 			<button
+				data-testid="increment"
 				disabled={formStatus.pending || optimisticQuantity >= maxQuantity}
 				className="flex h-6 w-6 items-center justify-center border border-zinc-950 disabled:border-zinc-400 disabled:text-zinc-400"
 				type="submit"
