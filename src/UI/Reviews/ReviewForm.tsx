@@ -1,8 +1,8 @@
 import React from "react";
 import  styles from "./ReviewFrom.module.scss"
-type Props = {};
 
-const ReviewForm = (props: Props) => {
+
+const ReviewForm = () => {
 	console.log("test");
 	return (
 		<form data-testid="add-review-form">

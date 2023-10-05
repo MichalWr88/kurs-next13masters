@@ -4,6 +4,7 @@ import { cookies } from "next/headers";
 import { notFound } from "next/navigation";
 import AddCartButton from "@/UI/Buttons/AddCartButton";
 import ProductImg from "@/UI/Product/ProductImg";
+
 import { getOrCreateCart } from "@/api/cartProider";
 import {
 	checkIsOrderItemInCart,
@@ -12,7 +13,6 @@ import {
 } from "@/api/graphQL/graphQLProvider";
 import { ProductGetBySlugDocument } from "@/gql/graphql";
 import { changeItemQuantity } from "../../cart/actions";
-import ReviewForm from "@/UI/Reviews/ReviewForm";
 
 export const generateMetadata = async ({ params: { slugId } }: { params: { slugId: string } }) => {
 	const resp = await executeGraphql({
