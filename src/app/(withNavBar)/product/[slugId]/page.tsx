@@ -12,6 +12,7 @@ import {
 } from "@/api/graphQL/graphQLProvider";
 import { ProductGetBySlugDocument } from "@/gql/graphql";
 import { changeItemQuantity } from "../../cart/actions";
+import ReviewForm from "@/UI/Reviews/ReviewForm";
 
 export const generateMetadata = async ({ params: { slugId } }: { params: { slugId: string } }) => {
 	const resp = await executeGraphql({
@@ -59,7 +60,7 @@ const PageProduct = async ({ params: { slugId } }: { params: { slugId: string } 
 	}
 
 	return (
-		<section className="min-h-screen">
+		<section className="">
 			<div className="container mx-auto px-5 py-24">
 				<div className="grid grid-cols-2 gap-5">
 					<ProductImg product={product} />
@@ -77,13 +78,13 @@ const PageProduct = async ({ params: { slugId } }: { params: { slugId: string } 
 						<div className="mb-4 flex"></div>
 						<p className="leading-relaxed">{product.description}</p>
 						<div className="mb-5 mt-6 flex items-center border-b-2 border-gray-100 pb-5">
-							<div className="flex">
+							{/* <div className="flex">
 								<span className="mr-3">Color</span>
 								<button className="h-6 w-6 rounded-full border-2 border-gray-300 focus:outline-none"></button>
 								<button className="ml-1 h-6 w-6 rounded-full border-2 border-gray-300 bg-gray-700 focus:outline-none"></button>
 								<button className="ml-1 h-6 w-6 rounded-full border-2 border-gray-300 bg-indigo-500 focus:outline-none"></button>
-							</div>
-							<div className="ml-6 flex items-center">
+							</div> */}
+							{/* <div className="ml-6 flex items-center">
 								<span className="mr-3">Size</span>
 								<div className="relative">
 									<select className="appearance-none rounded border border-gray-300 py-2 pl-3 pr-10 text-base focus:border-indigo-500 focus:outline-none focus:ring-2 focus:ring-indigo-200">
@@ -106,25 +107,12 @@ const PageProduct = async ({ params: { slugId } }: { params: { slugId: string } 
 										</svg>
 									</span>
 								</div>
-							</div>
+							</div> */}
 						</div>
 
 						<form className="flex" action={addProductToCartAction}>
 							<span className="title-font text-2xl font-medium text-gray-900">$58.00</span>
 							<AddCartButton />
-
-							{/* <button className="ml-4 inline-flex h-10 w-10 items-center justify-center rounded-full border-0 bg-gray-200 p-0 text-gray-500">
-								<svg
-									fill="currentColor"
-									strokeLinecap="round"
-									strokeLinejoin="round"
-									strokeWidth="2"
-									className="h-5 w-5"
-									viewBox="0 0 24 24"
-								>
-									<path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"></path>
-								</svg>
-							</button> */}
 						</form>
 					</div>
 				</div>
