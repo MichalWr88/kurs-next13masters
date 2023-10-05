@@ -7,9 +7,11 @@ import ProductImg from "./ProductImg";
 
 type Props = {
 	product: ProductDataWithCategoriesFragment;
+	priceTestId?: string;
+	ratingTestId?: string;
 };
 
-const ProductElem = ({ product }: Props) => {
+const ProductElem = ({ product, priceTestId,ratingTestId }: Props) => {
 	const { slug, title, price, categories, rating, images } = product;
 	return (
 		<AppLink route={`/product/${slug}`}>
@@ -28,8 +30,10 @@ const ProductElem = ({ product }: Props) => {
 				</div>
 				<h2 className="text-lg font-medium text-gray-900">{title}</h2>
 				<div className="flex justify-between">
-					<Rating rating={rating ?? 0} />
-					<p className="mt-1 font-bold">$ {price}</p>
+					<Rating rating={rating ?? 0} ratingTestId={ratingTestId}/>
+					<p className="mt-1 font-bold" >
+						$ <b data-testid={priceTestId}>{price}</b>
+					</p>
 				</div>
 			</figcaption>
 		</AppLink>

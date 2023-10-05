@@ -17,7 +17,7 @@ const RecommendedProducts = async () => {
 
 	return (
 		<ul className="mt-2 border-t-2 bg-brand-color-3 pt-4" data-testid="related-products">
-			<ProductList header="Recommended Products" testId="products-list">
+			<ProductList header="Recommended Products" testId="products-list" >
 				{resp.products?.data.map((item) => {
 					if (!item.attributes) return null;
 

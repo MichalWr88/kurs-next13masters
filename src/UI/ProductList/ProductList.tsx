@@ -12,6 +12,7 @@ const ProductList = ({
 	children: ReactNode;
 	classString?: string;
 	testId?: string;
+	
 }) => (
 		<section className=" text-gray-600 ">
 			<ProductListHeader header={header||""} />

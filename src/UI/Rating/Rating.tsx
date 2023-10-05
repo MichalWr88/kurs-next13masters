@@ -3,10 +3,11 @@ import React from "react";
 
 type Props = {
 	rating: number | null;
+	ratingTestId?: string;
 };
 const startsNumber = 5;
 
-const Rating = ({ rating }: Props) => {
+const Rating = ({ rating, ratingTestId }: Props) => {
 	if (!rating) return null;
 	const ratingStarsArray = Array.from(
 		{ length: startsNumber },
@@ -21,7 +22,7 @@ const Rating = ({ rating }: Props) => {
 				data-te-readonly="true"
 				data-te-value="3"
 			>
-				{ratingStarsArray.map((fill,i) => (
+				{ratingStarsArray.map((fill, i) => (
 					<p key={`rating-star-${fill}-${i}`}>
 						<span
 							className={clsx("[&>svg]:h-5 [&>svg]:w-5", fill && "bg-indigo-600")}
@@ -44,7 +45,9 @@ const Rating = ({ rating }: Props) => {
 					</p>
 				))}
 			</ul>
-			<span className="ml-2">{((rating * 5) / 100).toFixed(2)}</span>
+			<span className="ml-2" data-testid={ratingTestId}>
+				{((rating * 5) / 100).toFixed(2)}
+			</span>
 		</div>
 	);
 };
