@@ -82,6 +82,7 @@ export const getCartBySlug = async (cartId?: string): Promise<OrderDataFragment 
 		variables: {
 			slug: cartId,
 		},
+		cache: "no-store",
 	});
 
 	if (!resp.orders?.data || !resp.orders?.data[0]) {
@@ -112,13 +113,10 @@ export const checkIsOrderItemInCart = async (productId: number, cartId: number) 
 		variables: {
 			cartId: cartId.toString(),
 			productId: productId.toString(),
-		
 		},
 	});
 
-	
-
-	return resp.orderItems?.data[0] ?? null
+	return resp.orderItems?.data[0] ?? null;
 };
 
 export const getCategoriesList = async () => {
