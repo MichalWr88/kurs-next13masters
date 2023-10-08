@@ -1,9 +1,9 @@
 import React from "react";
 // import NavList from "../Navigation/NavList";
 
-type Props = {};
 
-function Footer({}: Props) {
+
+export function Footer() {
 	return (
 		<footer className="body-font text-gray-600">
 			<div className="container mx-auto px-5 py-24">
@@ -151,4 +151,3 @@ function Footer({}: Props) {
 	);
 }
 
-export default Footer;

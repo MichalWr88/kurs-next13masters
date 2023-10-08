@@ -1,4 +1,4 @@
-import Footer from "@/UI/Footer/Footer";
+import {Footer} from "@/UI/Footer/Footer";
 import NavBar from "@/UI/NavBar/NavBar";
 // import ScrollWrapper from "@/UI/ScrollWrapper/ScrollWrapper";
 export default function RootLayout({ children }: { children: React.ReactNode }) {
