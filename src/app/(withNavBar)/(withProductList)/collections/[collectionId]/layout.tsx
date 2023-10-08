@@ -1,12 +1,11 @@
 import { notFound } from "next/navigation";
 import CollectionsHeader from "@/UI/Collections/CollectionsHeader";
-import RoutePagination from "@/UI/RoutePagination/RoutePagination";
 import { executeGraphql } from "@/api/graphQL/graphQLProvider";
 import {
 	CollectionGetBySlugDocument,
 	ProductsGetCountListByCollectionSlugDocument,
 } from "@/gql/graphql";
-import type { Route } from "next";
+
 
 export const generateMetadata = async ({
 	params: { collectionId },
@@ -53,12 +52,7 @@ export default async function RootLayout({
 		<>
 			<CollectionsHeader collection={collectionResp.collections?.data[0]?.attributes} />
 			{children}
-			<RoutePagination
-				basePath={`/collections/${params.collectionId}` as Route}
-				currentPage={1}
-				totalCount={resp.products?.meta.pagination.total ?? 0}
-				pageSize={20}
-			/>
+
 		</>
 	);
 }

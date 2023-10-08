@@ -31,7 +31,7 @@ const ProductPage = async ({
 	if (!resp.products) {
 		throw notFound();
 	}
-	console.log("searchParams", searchParams);
+
 	return (
 		<>
 			<SelectSortProducts searchParams={searchParams} />

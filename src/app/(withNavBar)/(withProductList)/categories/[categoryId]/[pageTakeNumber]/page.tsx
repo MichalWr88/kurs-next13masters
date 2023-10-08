@@ -1,6 +1,8 @@
+import { type Route } from "next";
 import { notFound } from "next/navigation";
 import ProductElem from "@/UI/Product/ProductElem";
 import ProductList from "@/UI/ProductList/ProductList";
+import RoutePagination from "@/UI/RoutePagination/RoutePagination";
 import { executeGraphql } from "@/api/graphQL/graphQLProvider";
 import { ProductsGetListDocument } from "@/gql/graphql";
 
@@ -33,19 +35,25 @@ const CategoriesIdPage = async ({
 
 	return (
 		<>
-		<h1>{`Products list ${params.categoryId}`}</h1>
+			<h1>{`Products list ${params.categoryId}`}</h1>
 
-		<ProductList >
-			{resp.products?.data.map((item) => {
-				if (!item.attributes) return null;
+			<ProductList>
+				{resp.products?.data.map((item) => {
+					if (!item.attributes) return null;
 
-				return (
-					<li key={`product-${item.attributes.slug}`}>
-						<ProductElem product={item.attributes} />
-					</li>
-				);
-			})}
-		</ProductList>
+					return (
+						<li key={`product-${item.attributes.slug}`}>
+							<ProductElem product={item.attributes} />
+						</li>
+					);
+				})}
+			</ProductList>
+			<RoutePagination
+				basePath={`/categories/${params.categoryId}` as Route}
+				currentPage={Number(params.pageTakeNumber)}
+				totalCount={resp.products?.meta.pagination.total ?? 0}
+				pageSize={20}
+			/>
 		</>
 	);
 };
