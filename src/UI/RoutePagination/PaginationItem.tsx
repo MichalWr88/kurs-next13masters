@@ -18,7 +18,7 @@ const PaginationItem = ({ children, href, blocked, selected, index }: Props) => 
 			href={href}
 			className={clsx(
 				"relative mx-3 block  rounded-2xl px-3 py-2 text-lg  transition-all duration-300 hover:bg-brand-color-4",
-				selected && "bg-brand-color-2 font-bold text-brand-font-color",
+				selected && "bg-brand-color-3 font-bold text-brand-color-4",
 				blocked && "text-brand-color-4",
 			)}
 		>

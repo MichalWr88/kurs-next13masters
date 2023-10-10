@@ -11,7 +11,7 @@ const Rating = ({ rating, ratingTestId }: Props) => {
 	if (!rating) return null;
 	const ratingStarsArray = Array.from(
 		{ length: startsNumber },
-		(_, i) => i + 1 <= Number(((rating * 5) / 100).toFixed(2)),
+		(_, i) => i + 1 <= Number(rating.toFixed(2)),
 	);
 
 	return (
@@ -29,6 +29,7 @@ const Rating = ({ rating, ratingTestId }: Props) => {
 							data-te-rating-icon-ref
 						>
 							<svg
+							className="text-brand-color-3"
 								xmlns="http://www.w3.org/2000/svg"
 								fill={fill ? "currentColor" : "none"}
 								viewBox="0 0 24 24"
@@ -46,7 +47,7 @@ const Rating = ({ rating, ratingTestId }: Props) => {
 				))}
 			</ul>
 			<span className="ml-2" data-testid={ratingTestId}>
-				{((rating * 5) / 100).toFixed(2)}
+				{rating.toFixed(2)}
 			</span>
 		</div>
 	);
