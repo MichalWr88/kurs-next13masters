@@ -1,6 +1,4 @@
-
-import {  getCategoriesList } from "@/api/graphQL/graphQLProvider";
-
+import { getCategoriesList } from "@/api/graphQL/graphQLProvider";
 
 export const generateStaticParams = async () => {
 	const categories = await getCategoriesList();
@@ -20,5 +18,5 @@ export default async function RootLayout({
 }) {
 	// eslint-disable-next-line @typescript-eslint/no-unsafe-argument
 
-	return { children };
+	return <>{children}</>;
 }
