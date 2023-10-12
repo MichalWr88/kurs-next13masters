@@ -15,7 +15,7 @@ export type Scalars = {
   Int: { input: number; output: number; }
   Float: { input: number; output: number; }
   /** A date-time string at UTC, such as 2007-12-03T10:15:30Z, compliant with the `date-time` format outlined in section 5.6 of the RFC 3339 profile of the ISO 8601 standard for representation of dates and times using the Gregorian calendar. */
-  DateTime: { input: unknown; output: unknown; }
+  DateTime: { input: string; output: string; }
   /** A string used to identify an i18n locale */
   I18NLocaleCode: { input: unknown; output: unknown; }
   /** The `JSON` scalar type represents JSON values as specified by [ECMA-404](http://www.ecma-international.org/publications/files/ECMA-ST/ECMA-404.pdf). */
@@ -1843,6 +1843,13 @@ export type ProductDataFragment = { rating: number, price: number, slug: string,
 
 export type ProductDataWithCategoriesFragment = { rating: number, price: number, slug: string, title: string, description: string, locale: string | null, categories: { data: Array<{ id: string | null, attributes: { name: string | null, slug: string } | null }> } | null, images: { data: Array<{ attributes: { url: string, width: number | null, height: number | null } | null }> } | null };
 
+export type ProductReviewsQueryVariables = Exact<{
+  id: Scalars['ID']['input'];
+}>;
+
+
+export type ProductReviewsQuery = { product: { data: { attributes: { reviews: { data: Array<{ id: string | null, attributes: { createdAt: string | null, headline: string, name: string, email: string | null, content: string, rating: number } | null }> } | null } | null } | null } | null };
+
 export type ProductsGetListQueryVariables = Exact<{
   page: Scalars['Int']['input'];
   pageSize: Scalars['Int']['input'];
@@ -1871,6 +1878,21 @@ export type ProductsGetCountListByCollectionSlugQueryVariables = Exact<{
 
 
 export type ProductsGetCountListByCollectionSlugQuery = { products: { meta: { pagination: { total: number } } } | null };
+
+export type ReviewCreateMutationVariables = Exact<{
+  headline: Scalars['String']['input'];
+  name: Scalars['String']['input'];
+  email: Scalars['String']['input'];
+  content: Scalars['String']['input'];
+  rating: Scalars['Int']['input'];
+  product: Scalars['ID']['input'];
+  publishedAt: Scalars['DateTime']['input'];
+}>;
+
+
+export type ReviewCreateMutation = { createReview: { data: { id: string | null, attributes: { createdAt: string | null, headline: string, name: string, email: string | null, content: string, rating: number } | null } | null } | null };
+
+export type ReviewDataFragment = { id: string | null, attributes: { createdAt: string | null, headline: string, name: string, email: string | null, content: string, rating: number } | null };
 
 export type PaginationDataFragment = { total: number, page: number, pageSize: number, pageCount: number };
 
@@ -2032,6 +2054,19 @@ fragment ProductData on Product {
   description
   locale
 }`, {"fragmentName":"ProductDataWithCategories"}) as unknown as TypedDocumentString<ProductDataWithCategoriesFragment, unknown>;
+export const ReviewDataFragmentDoc = new TypedDocumentString(`
+    fragment ReviewData on ReviewEntity {
+  id
+  attributes {
+    createdAt
+    headline
+    name
+    email
+    content
+    rating
+  }
+}
+    `, {"fragmentName":"ReviewData"}) as unknown as TypedDocumentString<ReviewDataFragment, unknown>;
 export const PaginationDataFragmentDoc = new TypedDocumentString(`
     fragment PaginationData on Pagination {
   total
@@ -2364,6 +2399,31 @@ fragment ProductDataWithCategories on Product {
     }
   }
 }`) as unknown as TypedDocumentString<ProductGetBySlugQuery, ProductGetBySlugQueryVariables>;
+export const ProductReviewsDocument = new TypedDocumentString(`
+    query ProductReviews($id: ID!) {
+  product(id: $id) {
+    data {
+      attributes {
+        reviews {
+          data {
+            ...ReviewData
+          }
+        }
+      }
+    }
+  }
+}
+    fragment ReviewData on ReviewEntity {
+  id
+  attributes {
+    createdAt
+    headline
+    name
+    email
+    content
+    rating
+  }
+}`) as unknown as TypedDocumentString<ProductReviewsQuery, ProductReviewsQueryVariables>;
 export const ProductsGetListDocument = new TypedDocumentString(`
     query ProductsGetList($page: Int!, $pageSize: Int!, $filters: ProductFiltersInput, $sort: [String]) {
   products(
@@ -2459,3 +2519,24 @@ export const ProductsGetCountListByCollectionSlugDocument = new TypedDocumentStr
   }
 }
     `) as unknown as TypedDocumentString<ProductsGetCountListByCollectionSlugQuery, ProductsGetCountListByCollectionSlugQueryVariables>;
+export const ReviewCreateDocument = new TypedDocumentString(`
+    mutation ReviewCreate($headline: String!, $name: String!, $email: String!, $content: String!, $rating: Int!, $product: ID!, $publishedAt: DateTime!) {
+  createReview(
+    data: {publishedAt: $publishedAt, headline: $headline, name: $name, email: $email, content: $content, rating: $rating, product: $product}
+  ) {
+    data {
+      ...ReviewData
+    }
+  }
+}
+    fragment ReviewData on ReviewEntity {
+  id
+  attributes {
+    createdAt
+    headline
+    name
+    email
+    content
+    rating
+  }
+}`) as unknown as TypedDocumentString<ReviewCreateMutation, ReviewCreateMutationVariables>;

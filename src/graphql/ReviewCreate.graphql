@@ -1,0 +1,37 @@
+mutation ReviewCreate(
+	$headline: String!
+	$name: String!
+	$email: String!
+	$content: String!
+	$rating: Int!
+	$product: ID!
+	$publishedAt: DateTime!
+) {
+	createReview(
+		data: {
+			publishedAt: $publishedAt
+			headline: $headline
+			name: $name
+			email: $email
+			content: $content
+			rating: $rating
+			product: $product
+		}
+	) {
+		data {
+			...ReviewData
+		}
+	}
+}
+
+fragment ReviewData on ReviewEntity {
+	id
+	attributes {
+		createdAt
+		headline
+		name
+		email
+		content
+		rating
+	}
+}

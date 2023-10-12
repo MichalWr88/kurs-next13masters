@@ -1,0 +1,13 @@
+query ProductReviews($id: ID!) {
+	product(id: $id) {
+		data {
+			attributes {
+				reviews {
+					data {
+						...ReviewData
+					}
+				}
+			}
+		}
+	}
+}

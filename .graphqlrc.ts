@@ -15,9 +15,13 @@ const config: CodegenConfig = {
 				fragmentMasking: false //{unmaskFunctionName:"getFragmentData"},
 			},
 			config: {
+			
 				useTypeImports: true,
 				enumsAsTypes: true,
 				defaultScalarType: "unknown",
+				scalars:{
+					DateTime: 'string',
+				},
 				skipTypename: true,
 				documentMode: "string",
 				avoidOptionals: {
