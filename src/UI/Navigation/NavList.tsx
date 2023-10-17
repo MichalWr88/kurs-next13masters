@@ -58,7 +58,7 @@ const NavList = async () => {
 	return (
 		<>
 			{navList.map((nav) => (
-				<li key={`nav-${encodeURI(nav.label)}`} className="flex items-center text-xl">
+				<li key={`nav-${encodeURI(nav.label)}`} className="flex items-center md:text-xl">
 					<ActiveLink href={nav.path}>{nav.label}</ActiveLink>
 				</li>
 			))}

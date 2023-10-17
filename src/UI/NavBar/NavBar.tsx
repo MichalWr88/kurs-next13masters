@@ -4,6 +4,7 @@ import { Suspense, useMemo } from "react";
 import NavList from "../Navigation/NavList";
 import SearchBar from "../Search/SearchBar";
 import CartCount from "./CartCount";
+import MenuButton from "./MenuButton";
 
 // eslint-disable-next-line react/display-name
 const NavBar = () => {
@@ -12,26 +13,29 @@ const NavBar = () => {
 	return (
 		<header
 			className={clsx(
-				"sticky z-50  flex justify-center bg-brand-bg-color transition-all delay-150 duration-500 ease-in-out",
+				"sticky top-0  z-50 flex w-screen justify-center bg-brand-bg-color transition-all delay-150 duration-500 ease-in-out pb-3 shadow-md",
 			)}
 		>
-			<div className="container flex items-center justify-center">
+			<div className="container flex flex-wrap items-center justify-center">
 				<Image
-					className=""
+				className="h-auto"
 					quality={20}
 					src={"/logo1.png"}
 					alt={"man wearing a leather jacket"}
-					width={78}
+					width={70}
 					height={68}
 				/>
 
-				<nav className="flex h-24 justify-center p-4">
-					<ul className="container flex ">
+				<nav className="relative flex h-24 justify-center overflow-hidden p-4">
+					<ul className="container flex w-full overflow-x-auto overflow-y-hidden">
 						<Suspense fallback={"loading...."}>{navList}</Suspense>
 					</ul>
 				</nav>
-				<SearchBar/>
+				<div className="flex w-full md:w-auto px-4 box-border md:justify-end">
+				<SearchBar />
+
 				<CartCount />
+				</div>
 			</div>
 		</header>
 	);

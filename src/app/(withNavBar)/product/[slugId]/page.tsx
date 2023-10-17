@@ -63,23 +63,22 @@ const PageProduct = async ({ params: { slugId } }: { params: { slugId: string } 
 
 	return (
 		<>
-			<section className="">
-				<div className="container mx-auto px-5 py-24">
-					<div className="grid grid-cols-2 gap-5">
-						<ProductImg product={product} />
-						<div className="">
-							<h1 className="title-font mb-1 text-3xl font-medium text-gray-900">{product.title}</h1>
+			<section className="relative">
+				<div className="container flex w-full flex-col items-center justify-center px-5 py-12 md:py-24">
+					<div className="grid grid-cols-1 gap-5 md:grid-cols-2">
+						<div className="w-screen p-6">
+							<ProductImg product={product} />
+						</div>
+						<div className="px-6">
+							<h1 className="mb-1 text-center font-bold text-gray-900 md:text-3xl">{product.title}</h1>
 							{product.categories?.data.map((cat) => (
-								<h2
-									key={`cat-${cat.attributes?.slug}`}
-									className="title-font text-sm tracking-widest text-gray-500"
-								>
+								<h2 key={`cat-${cat.attributes?.slug}`} className="text-sm tracking-widest text-gray-500">
 									{cat.attributes?.name}
 								</h2>
 							))}
 
 							<div className="mb-4 flex"></div>
-							<p className="leading-relaxed">{product.description}</p>
+							<p className="leading-relaxed text-gray-500">{product.description}</p>
 							<div className="mb-5 mt-6 flex items-center border-b-2 border-gray-100 pb-5">
 								{/* <div className="flex">
 								<span className="mr-3">Color</span>
@@ -114,7 +113,7 @@ const PageProduct = async ({ params: { slugId } }: { params: { slugId: string } 
 							</div>
 
 							<form className="flex" action={addProductToCartAction}>
-								<span className="title-font text-2xl font-medium text-gray-900">$58.00</span>
+								<span className="text-2xl font-medium text-gray-900">$58.00</span>
 								<AddCartButton />
 							</form>
 						</div>

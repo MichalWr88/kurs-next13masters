@@ -14,7 +14,7 @@ const ProductImg = ({ product, fit }: Props) => {
 		<>
 			{images?.data[0] && (
 				<Image
-					className="relative h-max transition-all delay-100 duration-300 ease-in-out "
+					className="relative h-max transition-all delay-100 duration-300 ease-in-out w-80"
 					quality={20}
 					placeholder="blur" // "empty" | "blur"
 					blurDataURL="/blur.png"

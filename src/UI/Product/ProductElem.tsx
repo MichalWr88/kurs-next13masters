@@ -11,12 +11,12 @@ type Props = {
 	ratingTestId?: string;
 };
 
-const ProductElem = ({ product, priceTestId,ratingTestId }: Props) => {
+const ProductElem = ({ product, priceTestId, ratingTestId }: Props) => {
 	const { slug, title, price, categories, rating, images } = product;
 	return (
 		<AppLink route={`/product/${slug}`}>
 			{images?.data[0] && <ProductImg product={product} />}
-			<figcaption className="mt-4">
+			<figcaption className="mt-4 w-full">
 				<div className="flex gap-2">
 					{categories &&
 						categories.data?.map((cat) => (
@@ -30,8 +30,8 @@ const ProductElem = ({ product, priceTestId,ratingTestId }: Props) => {
 				</div>
 				<h2 className="text-lg font-medium text-gray-900">{title}</h2>
 				<div className="flex justify-between">
-					<Rating rating={rating ?? 0} ratingTestId={ratingTestId}/>
-					<p className="mt-1 font-bold" >
+					<Rating rating={rating ?? 0} ratingTestId={ratingTestId} />
+					<p className="mt-1 font-bold">
 						$ <b data-testid={priceTestId}>{price}</b>
 					</p>
 				</div>
