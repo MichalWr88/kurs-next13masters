@@ -49,7 +49,7 @@ const PageProduct = async ({ params: { slugId } }: { params: { slugId: string } 
 		});
 		const order = await checkIsOrderItemInCart(Number(id as string), Number(cart.id));
 
-		if (order && order.id) {
+		if (order?.id) {
 			await changeItemQuantity(
 				order.id,
 				(order.attributes?.quantity ?? 0) + 1,
@@ -58,7 +58,7 @@ const PageProduct = async ({ params: { slugId } }: { params: { slugId: string } 
 			return;
 		}
 
-		await createCartItem(Number(cart.id), Number(id), product?.price || 0);
+		await createCartItem(Number(cart.id), Number(id), product?.price ?? 0);
 	}
 
 	return (

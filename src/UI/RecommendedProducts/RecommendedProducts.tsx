@@ -5,7 +5,6 @@ import ProductElem from "../Product/ProductElem";
 import ProductList from "../ProductList/ProductList";
 
 const RecommendedProducts = async () => {
-	// const products = await getProductsList({ take: "5", offset: "100" });
 	const resp = await executeGraphql({
 		query: ProductsGetListDocument,
 		variables: {

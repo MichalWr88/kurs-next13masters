@@ -2,10 +2,8 @@ import React from 'react'
 
 
 
-const Review = () => {
-  return (
+const Review = () => (
     <div>Review</div>
   )
-}
 
 export default Review
