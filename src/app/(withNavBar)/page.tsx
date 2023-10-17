@@ -23,7 +23,7 @@ export default function Home() {
 					blurDataURL="/blur.png"
 					style={{ objectFit: "cover" }}
 				/>
-				<h1 className=" relative z-10 rounded-xl  px-3 text-center font-nanum text-8xl uppercase text-brand-color-2 after:left-0 after:top-0 after:h-full after:w-full after:bg-brand-bg-color after:content-[attr(after)] after:absolute after:-z-10 after:opacity-70">
+				<h1 className=" relative z-10 rounded-xl  px-3 text-center font-nanum  text-2xl md:text-8xl uppercase text-brand-color-2 after:left-0 after:top-0 after:h-full after:w-full after:bg-brand-bg-color after:content-[attr(after)] after:absolute after:-z-10 after:opacity-70">
 					Taste on Our Hands
 				</h1>
 
@@ -32,7 +32,7 @@ export default function Home() {
 				</h2>
 			</section>
 			<section className="my-32 flex flex-col items-center justify-center">
-				<h2 className="mb-9 flex items-center text-4xl text-brand-color-2">
+				<h2 className="mb-9 flex items-center text-2xl md:text-4xl text-brand-color-2">
 					WELCOME TO OUR <span className="pl-3 font-nanum text-7xl">Top</span>
 				</h2>
 				<p className="mb-8 max-w-2xl text-center text-2xl">
