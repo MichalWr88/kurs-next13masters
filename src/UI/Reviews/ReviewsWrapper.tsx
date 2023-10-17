@@ -2,14 +2,12 @@ import React from "react";
 import ReviewForm from "./ReviewForm";
 import ReviewsList from "./ReviewsList";
 
-
-
-const ReviewsWrapper = () => {
+const ReviewsWrapper = ({ id }: { id: number }) => {
 	console.log("test");
 	return (
 		<div className="flex p-4">
-			<ReviewForm />
-			<ReviewsList />
+			<ReviewForm id={id} />
+			<ReviewsList id={id} />
 		</div>
 	);
 };

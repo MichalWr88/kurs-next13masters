@@ -2,10 +2,12 @@
 
 import { cookies } from "next/headers";
 import { notFound } from "next/navigation";
+import { Suspense } from "react";
 import AddCartButton from "@/UI/Buttons/AddCartButton";
 import ProductImg from "@/UI/Product/ProductImg";
 
-import { getOrCreateCart } from "@/api/cartProider";
+import ReviewsWrapper from "@/UI/Reviews/ReviewsWrapper";
+import { getOrCreateCart } from "@/api/cartProvider";
 import {
 	checkIsOrderItemInCart,
 	createCartItem,
@@ -60,31 +62,32 @@ const PageProduct = async ({ params: { slugId } }: { params: { slugId: string } 
 	}
 
 	return (
-		<section className="">
-			<div className="container mx-auto px-5 py-24">
-				<div className="grid grid-cols-2 gap-5">
-					<ProductImg product={product} />
-					<div className="">
-						<h1 className="title-font mb-1 text-3xl font-medium text-gray-900">{product.title}</h1>
-						{product.categories?.data.map((cat) => (
-							<h2
-								key={`cat-${cat.attributes?.slug}`}
-								className="title-font text-sm tracking-widest text-gray-500"
-							>
-								{cat.attributes?.name}
-							</h2>
-						))}
+		<>
+			<section className="">
+				<div className="container mx-auto px-5 py-24">
+					<div className="grid grid-cols-2 gap-5">
+						<ProductImg product={product} />
+						<div className="">
+							<h1 className="title-font mb-1 text-3xl font-medium text-gray-900">{product.title}</h1>
+							{product.categories?.data.map((cat) => (
+								<h2
+									key={`cat-${cat.attributes?.slug}`}
+									className="title-font text-sm tracking-widest text-gray-500"
+								>
+									{cat.attributes?.name}
+								</h2>
+							))}
 
-						<div className="mb-4 flex"></div>
-						<p className="leading-relaxed">{product.description}</p>
-						<div className="mb-5 mt-6 flex items-center border-b-2 border-gray-100 pb-5">
-							{/* <div className="flex">
+							<div className="mb-4 flex"></div>
+							<p className="leading-relaxed">{product.description}</p>
+							<div className="mb-5 mt-6 flex items-center border-b-2 border-gray-100 pb-5">
+								{/* <div className="flex">
 								<span className="mr-3">Color</span>
 								<button className="h-6 w-6 rounded-full border-2 border-gray-300 focus:outline-none"></button>
 								<button className="ml-1 h-6 w-6 rounded-full border-2 border-gray-300 bg-gray-700 focus:outline-none"></button>
 								<button className="ml-1 h-6 w-6 rounded-full border-2 border-gray-300 bg-indigo-500 focus:outline-none"></button>
 							</div> */}
-							{/* <div className="ml-6 flex items-center">
+								{/* <div className="ml-6 flex items-center">
 								<span className="mr-3">Size</span>
 								<div className="relative">
 									<select className="appearance-none rounded border border-gray-300 py-2 pl-3 pr-10 text-base focus:border-indigo-500 focus:outline-none focus:ring-2 focus:ring-indigo-200">
@@ -108,16 +111,20 @@ const PageProduct = async ({ params: { slugId } }: { params: { slugId: string } 
 									</span>
 								</div>
 							</div> */}
-						</div>
+							</div>
 
-						<form className="flex" action={addProductToCartAction}>
-							<span className="title-font text-2xl font-medium text-gray-900">$58.00</span>
-							<AddCartButton />
-						</form>
+							<form className="flex" action={addProductToCartAction}>
+								<span className="title-font text-2xl font-medium text-gray-900">$58.00</span>
+								<AddCartButton />
+							</form>
+						</div>
 					</div>
 				</div>
-			</div>
-		</section>
+			</section>
+			<Suspense fallback={"loading...."}>
+				<ReviewsWrapper id={Number(id)} />
+			</Suspense>
+		</>
 	);
 };
 
