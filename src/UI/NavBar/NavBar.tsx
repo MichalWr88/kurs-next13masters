@@ -4,7 +4,6 @@ import { Suspense, useMemo } from "react";
 import NavList from "../Navigation/NavList";
 import SearchBar from "../Search/SearchBar";
 import CartCount from "./CartCount";
-import MenuButton from "./MenuButton";
 
 // eslint-disable-next-line react/display-name
 const NavBar = () => {
