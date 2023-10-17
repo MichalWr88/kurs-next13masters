@@ -1,7 +1,9 @@
 import { type Metadata } from "next";
 import Image from "next/image";
 import CollectionsList from "@/UI/Collections/CollectionsList";
+import ContactForm from "@/UI/ContactForm/ContactForm";
 import RecommendedProducts from "@/UI/RecommendedProducts/RecommendedProducts";
+import Statistics from "@/UI/Statistics/Statistics";
 
 export const metadata: Metadata = {
 	title: "Shop course next13 masters",
@@ -21,7 +23,7 @@ export default function Home() {
 					blurDataURL="/blur.png"
 					style={{ objectFit: "cover" }}
 				/>
-				<h1 className=" z-10 bg-brand-bg-color px-3 text-center font-nanum text-9xl uppercase text-brand-color-2 rounded-xl">
+				<h1 className=" relative z-10 rounded-xl  px-3 text-center font-nanum text-8xl uppercase text-brand-color-2 after:left-0 after:top-0 after:h-full after:w-full after:bg-brand-bg-color after:content-[attr(after)] after:absolute after:-z-10 after:opacity-70">
 					Taste on Our Hands
 				</h1>
 
@@ -38,22 +40,36 @@ export default function Home() {
 					labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
 					laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in
 				</p>
-				<button className="bg-brand-color-3 px-7 py-3 text-brand-bg-color hover:shadow-md">MAKE A RESERVATION</button>
-
+				<button className="bg-brand-color-3 px-7 py-3 text-brand-bg-color hover:shadow-md">
+					MAKE A RESERVATION
+				</button>
 			</section>
-			<section className="grid grid-cols-2">
-				<div> img bedzie tu</div>
-				<article>
-					<header>MAKE EVERY COOKING TIME A SPECIAL MOMENT</header>
-					<div>icon</div>
-					<p>
+			<section className="light grid  w-full grid-cols-2 bg-brand-color-3">
+				<div className="relative col-span-1 h-[750px]">
+					<Image
+						src={"/bg2.webp"}
+						alt={"background"}
+						fill
+						placeholder="blur" // "empty" | "blur"
+						blurDataURL="/blur.png"
+						style={{ objectFit: "contain" }}
+					/>
+				</div>
+				<article className="col-span-1 flex flex-col items-center justify-center p-4">
+					<header className="w-72 text-center text-4xl text-brand-color-2">
+						MAKE EVERY COOKING TIME A SPECIAL MOMENT
+					</header>
+					<div className="h-36"></div>
+					<p className="w-96 text-justify text-xl font-thin text-brand-color-4">
 						Lorem ipsum dolor sit amet consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
 						labore ezt dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
 						laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit
 					</p>
 				</article>
 			</section>
-			<CollectionsList/>
+			<Statistics />
+			<ContactForm />
+			<CollectionsList />
 			<RecommendedProducts />
 		</div>
 	);

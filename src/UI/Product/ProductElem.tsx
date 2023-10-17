@@ -29,8 +29,8 @@ const ProductElem = ({ product, priceTestId, ratingTestId }: Props) => {
 				</div>
 				<h2 className="text-lg font-medium text-gray-900">{title}</h2>
 				<div className="flex justify-between">
-					<Rating rating={rating ?? 0} ratingTestId={ratingTestId} />
-					<p className="mt-1 font-bold">
+					<Rating rating={rating ?? 0} ratingTestId={ratingTestId}/>
+					<p className="mt-1 font-bold text-brand-font-color text-xl" >
 						$ <b data-testid={priceTestId}>{price}</b>
 					</p>
 				</div>
