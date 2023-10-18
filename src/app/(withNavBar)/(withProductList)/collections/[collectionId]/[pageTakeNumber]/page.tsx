@@ -19,7 +19,7 @@ const CategoriesIdPage = async ({
 			filters: { collections: { slug: { eq: params.collectionId } } },
 		},
 	});
-	console.log("params", params, resp.products?.meta);
+
 	if (!resp.products?.data || resp.products?.data.length === 0) {
 		throw notFound();
 	}

@@ -2,7 +2,7 @@ import { getReviewsListByProductId } from "@/api/graphQL/graphQLProvider";
 
 const ReviewsList = async ({ id }: { id: number }) => {
 	const reviews = await getReviewsListByProductId(id);
-	console.log("id", id, reviews);
+
 	return (
 		<section className="body-font w-full text-gray-600 ">
 			<div className="container px-5 ">

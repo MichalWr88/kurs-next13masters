@@ -3,11 +3,11 @@ import { addReviewToProduct } from "@/api/graphQL/ReviewProvider";
 import styles from "./ReviewFrom.module.scss";
 
 const ReviewForm = ({ id }: { id: number }) => {
-	console.log("test");
+
 
 	const sendReview = async (formData: FormData) => {
 		"use server";
-		console.log(formData.get("headline"));
+
 		const review = {
 			headline: formData.get("headline")?.toString() ?? "",
 			email: formData.get("email")?.toString() ?? "",

@@ -8,7 +8,6 @@ const SearchBar = () => {
 	const debouncedValue = useDebounce<string | undefined>(value?.trim(), 500);
 	const router = useRouter();
 	const params = useSearchParams();
-	console.log(params.get("query"));
 	useEffect(() => {
 		setValue(() => params.get("query") ?? undefined);
 

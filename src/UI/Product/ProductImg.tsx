@@ -11,7 +11,7 @@ const ProductImg = ({ product, fit }: Props) => {
 	if (!product) return null;
 	const { title, images } = product;
 	return (
-		<div className="relative overflow-hidden rounded-xl ">
+		<div className="relative min-h-[200px] overflow-hidden rounded-xl">
 			{images?.data[0] && (
 				<Image
 					className="relative  w-full transition-all delay-100 duration-300 ease-in-out hover:scale-125 hover:opacity-80 "
@@ -23,7 +23,7 @@ const ProductImg = ({ product, fit }: Props) => {
 					alt={title}
 					width={images?.data[0].attributes?.width ?? 200}
 					height={images?.data[0].attributes?.height ?? 200}
-					style={{ objectFit: fit }}
+					style={{ objectFit: fit, maxWidth: "100%", height: "auto" }}
 				/>
 			)}
 		</div>
