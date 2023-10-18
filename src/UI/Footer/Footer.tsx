@@ -6,7 +6,7 @@ export function Footer() {
 	return (
 		<footer className="body-font text-gray-600">
 			<div className="container mx-auto px-5 py-24">
-				<div className=" flex flex-wrap  justify-center">
+				<div className=" flex flex-wrap md:flex-nowrap justify-center">
 					<div className="w-full px-4 md:w-1/2 lg:w-1/6">
 						<h2 className=" mb-3 text-center text-xl font-bold tracking-widest text-brand-color-2 ">
 							CATEGORIES
