@@ -19,8 +19,8 @@ const ProductList = ({
 			<ul
 				data-testid={testId}
 				className={clsx(
-					"grid grid-cols-1 justify-center gap-8 p-2 sm:grid-cols-3 lg:grid-cols-3",
-					classString,
+					"grid grid-cols-1 justify-center gap-8 p-2 sm:grid-cols-3 ",
+					classString || "lg:grid-cols-4",
 				)}
 			>
 				{children}

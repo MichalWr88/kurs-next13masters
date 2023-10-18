@@ -13,7 +13,7 @@ const CollectionsList = async () => {
 	}
 
 	return (
-		<ProductList header="Collections" classString="lg:grid-cols-3">
+		<ProductList header="Collections" classString="md:grid-cols-3">
 			{collectionResp.collections?.data.map((collection) => {
 				const attr = collection.attributes;
 				return (
