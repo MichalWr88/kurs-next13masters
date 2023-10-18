@@ -13,7 +13,7 @@ const NavBar = () => {
 	return (
 		<header
 			className={clsx(
-				"sticky top-0  z-50 flex w-screen justify-center bg-brand-bg-color transition-all delay-150 duration-500 ease-in-out pb-3 shadow-md",
+				"sticky top-0  z-50 flex w-full justify-center bg-brand-bg-color transition-all delay-150 duration-500 ease-in-out pb-3 shadow-md box-border",
 			)}
 		>
 			<div className="container flex flex-wrap items-center justify-center">

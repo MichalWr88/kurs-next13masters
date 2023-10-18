@@ -23,8 +23,8 @@ export function Footer() {
 									farm-to-table. Franzen you probably heard of them.
 								</p>
 							</div>
-							<div className="grid  grid-cols-4 gap-4">
-								<div className="flex h-full w-44 flex-col items-center text-center">
+							<div className="grid  md:grid-cols-4 grid-cols-1 gap-4 items-center">
+								<div className="flex h-full  flex-col items-center text-center w-full">
 									<Image
 										className="h-full w-40 rounded-md"
 										quality={20}
@@ -86,7 +86,7 @@ export function Footer() {
 										</span>
 									</div>
 								</div>
-								<div className="flex h-full w-44 flex-col items-center text-center">
+								<div className="flex h-full w-full flex-col items-center text-center">
 									<Image
 										className="h-full w-40 rounded-md"
 										quality={20}
@@ -147,7 +147,7 @@ export function Footer() {
 										</span>
 									</div>
 								</div>
-								<div className="flex h-full w-44 flex-col items-center text-center">
+								<div className="flex h-full w-full flex-col items-center text-center">
 									<Image
 										className="h-full w-40 rounded-md"
 										quality={20}
@@ -208,7 +208,7 @@ export function Footer() {
 										</span>
 									</div>
 								</div>
-								<div className="flex h-full w-44 flex-col items-center text-center">
+								<div className="flex h-full w-full flex-col items-center text-center">
 									<Image
 										className="h-full w-40 rounded-md"
 										quality={20}
