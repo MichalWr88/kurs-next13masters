@@ -13,6 +13,8 @@ export const changeItemQuantity = async (itemId: string, quantity: number, price
 			quantity: quantity,
 			total: newTotal,
 		},
+		cache: "no-store",
+		next: { revalidate: 0 },
 	});
 	revalidateTag("cart");
 	return resp.updateOrderItem?.data;
@@ -23,7 +25,7 @@ export const removeProductItem = async (itemId: number) => {
 		variables: {
 			id: itemId.toString(),
 		},
-		cache: "no-cache",
+		cache: "no-store",
 		next: { revalidate: 0 },
 	});
 	revalidateTag("cart");
