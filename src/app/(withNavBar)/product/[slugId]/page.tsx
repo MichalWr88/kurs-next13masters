@@ -64,7 +64,7 @@ const PageProduct = async ({ params: { slugId } }: { params: { slugId: string } 
 
 	return (
 		<>
-			<section className="relative">
+			<section className="relative flex justify-center">
 				<div className="container flex w-full flex-col items-center justify-center px-5 py-12 md:py-24">
 					<div className="grid grid-cols-1 gap-5 md:grid-cols-2 w-full">
 					
