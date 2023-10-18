@@ -1,6 +1,7 @@
 import { clsx } from "clsx";
 import Image from "next/image";
 import { Suspense, useMemo } from "react";
+import MainLoader from "../Loaders/MainLoader";
 import NavList from "../Navigation/NavList";
 import SearchBar from "../Search/SearchBar";
 import CartCount from "./CartCount";
@@ -27,7 +28,7 @@ const NavBar = () => {
 
 				<nav className="relative flex h-24 justify-center overflow-hidden p-4">
 					<ul className="container flex w-full overflow-x-auto overflow-y-hidden">
-						<Suspense fallback={"loading...."}>{navList}</Suspense>
+						<Suspense fallback={<MainLoader />}>{navList}</Suspense>
 					</ul>
 				</nav>
 				<div className="flex w-full md:w-auto px-4 box-border md:justify-end">

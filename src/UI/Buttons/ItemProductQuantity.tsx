@@ -5,7 +5,7 @@ import { changeItemQuantity } from "@/app/(withNavBar)/cart/actions";
 
 const maxQuantity = 10;
 const minQuantity = 1;
-const IncrementProductQuantity = ({
+const ItemProductQuantity = ({
 	itemId,
 	quantity,
 	price,
@@ -54,4 +54,4 @@ const IncrementProductQuantity = ({
 	);
 };
 
-export default IncrementProductQuantity;
+export default ItemProductQuantity;

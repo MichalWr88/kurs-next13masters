@@ -41,12 +41,12 @@ const staticLink: Array<NavElem> = [
 	// 	label: "contacts",
 	// },
 ];
-const NavList = async () => {
-	const resp = await executeGraphql({query: CategoriesGetListDocument});
+const NavList = async ({ onlyCategories }: { onlyCategories?: boolean }) => {
+	const resp = await executeGraphql({ query: CategoriesGetListDocument });
 	const categories = resp.categories?.data;
 
 	const navList: Array<NavElem> = [
-		...staticLink,
+		...(onlyCategories ? [] : staticLink),
 		...(categories?.map(
 			(cat, index): NavElem => ({
 				id: Number(`0.${index}`),

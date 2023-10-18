@@ -23,6 +23,8 @@ export const removeProductItem = async (itemId: number) => {
 		variables: {
 			id: itemId.toString(),
 		},
+		cache: "no-cache",
+		next: { revalidate: 0 },
 	});
 	revalidateTag("cart");
 	return resp.deleteOrderItem?.data?.id;

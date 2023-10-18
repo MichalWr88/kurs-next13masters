@@ -16,7 +16,7 @@ const ProductElem = ({ product, priceTestId, ratingTestId }: Props) => {
 	return (
 		<AppLink route={`/product/${slug}`}>
 			{images?.data?.[0] && <ProductImg product={product} />}
-			<figcaption className="mt-4 w-full">
+			<figcaption className="mt-4 w-full px-5">
 				<div className="flex gap-2">
 					{categories?.data?.map((cat) => (
 						<p

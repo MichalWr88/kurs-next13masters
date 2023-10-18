@@ -1,12 +1,21 @@
 "use client";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import { type ChangeEvent, useEffect, useState } from "react";
 import { useDebounce } from "usehooks-ts";
 
 const SearchBar = () => {
 	const [value, setValue] = useState<string | undefined>();
-	const debouncedValue = useDebounce<string | undefined >(value?.trim(), 500);
+	const debouncedValue = useDebounce<string | undefined>(value?.trim(), 500);
 	const router = useRouter();
+	const params = useSearchParams();
+	console.log(params.get("query"));
+	useEffect(() => {
+		setValue(() => params.get("query") ?? undefined);
+
+		return () => {
+			setValue(() => undefined);
+		};
+	}, [params]);
 
 	const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
 		setValue(event.target.value);
@@ -16,13 +25,12 @@ const SearchBar = () => {
 	useEffect(() => {
 		if (debouncedValue === undefined) return;
 		if (!debouncedValue) {
-
 			router.push(`/products`);
 			return;
 		}
 		router.push(`/search?query=${encodeURIComponent(debouncedValue)}`);
 
-	// eslint-disable-next-line react-hooks/exhaustive-deps
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [debouncedValue]);
 
 	return (

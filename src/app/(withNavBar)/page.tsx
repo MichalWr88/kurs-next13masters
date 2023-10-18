@@ -16,7 +16,7 @@ export default function Home() {
 				<Image
 					className="absolute left-0 top-0 -z-0 h-full w-full"
 					quality={20}
-					src={"/bg1.png"}
+					src={"/bg1.jpg"}
 					alt={"background"}
 					fill
 					placeholder="blur" // "empty" | "blur"

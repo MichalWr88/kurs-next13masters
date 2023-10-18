@@ -4,6 +4,7 @@ import { cookies } from "next/headers";
 import { notFound } from "next/navigation";
 import { Suspense } from "react";
 import AddCartButton from "@/UI/Buttons/AddCartButton";
+import MainLoader from "@/UI/Loaders/MainLoader";
 import ProductImg from "@/UI/Product/ProductImg";
 
 import ReviewsWrapper from "@/UI/Reviews/ReviewsWrapper";
@@ -65,10 +66,10 @@ const PageProduct = async ({ params: { slugId } }: { params: { slugId: string } 
 		<>
 			<section className="relative">
 				<div className="container flex w-full flex-col items-center justify-center px-5 py-12 md:py-24">
-					<div className="grid grid-cols-1 gap-5 md:grid-cols-2">
-						<div className="w-screen p-6">
+					<div className="grid grid-cols-1 gap-5 md:grid-cols-2 w-full">
+					
 							<ProductImg product={product} />
-						</div>
+					
 						<div className="px-6">
 							<h1 className="mb-1 text-center font-bold text-gray-900 md:text-3xl">{product.title}</h1>
 							{product.categories?.data.map((cat) => (
@@ -120,7 +121,7 @@ const PageProduct = async ({ params: { slugId } }: { params: { slugId: string } 
 					</div>
 				</div>
 			</section>
-			<Suspense fallback={"loading...."}>
+			<Suspense fallback={<MainLoader />}>
 				<ReviewsWrapper id={Number(id)} />
 			</Suspense>
 		</>

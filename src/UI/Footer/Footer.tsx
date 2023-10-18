@@ -1,5 +1,6 @@
+import Image from "next/image";
 import React from "react";
-// import NavList from "../Navigation/NavList";
+import NavList from "../Navigation/NavList";
 
 export function Footer() {
 	return (
@@ -7,43 +8,37 @@ export function Footer() {
 			<div className="container mx-auto px-5 py-24">
 				<div className=" flex flex-wrap  justify-center">
 					<div className="w-full px-4 md:w-1/2 lg:w-1/6">
-						<h2 className="title-font mb-3 text-sm font-medium tracking-widest text-gray-900">
+						<h2 className=" mb-3 text-center text-xl font-bold tracking-widest text-brand-color-2 ">
 							CATEGORIES
 						</h2>
-						<nav className="mb-10 list-none">
-							<p>
-								<a className="text-gray-600 hover:text-gray-800">First Link</a>
-							</p>
-							<p>
-								<a className="text-gray-600 hover:text-gray-800">Second Link</a>
-							</p>
-							<p>
-								<a className="text-gray-600 hover:text-gray-800">Third Link</a>
-							</p>
-							<p>
-								<a className="text-gray-600 hover:text-gray-800">Fourth Link</a>
-							</p>
-						</nav>
+						<NavList onlyCategories />
 					</div>
 
 					<section className="body-font text-gray-600">
 						<div className="container mx-auto">
 							<div className="mb-20 flex w-full flex-col text-center">
-								<h1 className="title-font mb-4 text-2xl font-medium text-gray-900">OUR TEAM</h1>
+								<h1 className=" mb-4 text-2xl font-medium text-gray-900">OUR TEAM</h1>
 								<p className="mx-auto text-base leading-relaxed lg:w-2/3">
 									Whatever cardigan tote bag tumblr hexagon brooklyn asymmetrical gentrify, subway tile poke
 									farm-to-table. Franzen you probably heard of them.
 								</p>
 							</div>
-							<div className="grid grid-cols-4 gap-4">
+							<div className="grid  grid-cols-4 gap-4">
 								<div className="flex h-full w-44 flex-col items-center text-center">
-									<img
-										alt="team"
-										className="mb-4 h-56 w-full flex-shrink-0 rounded-lg object-cover object-center"
-										src="https://dummyimage.com/200x150"
+									<Image
+										className="h-full w-40 rounded-md"
+										quality={20}
+										src={"/person1.jpg"}
+										alt={"background"}
+										width={150}
+										height={200}
+										placeholder="blur" // "empty" | "blur"
+										blurDataURL="/blur.png"
+										style={{ objectFit: "cover" }}
 									/>
+
 									<div className="w-full">
-										<h2 className="title-font text-lg font-medium text-gray-900">Alper Kamu</h2>
+										<h2 className=" text-lg font-medium text-gray-900">Alper Kamu</h2>
 										<h3 className="mb-3 text-gray-500">UI Developer</h3>
 										<p className="mb-4">
 											DIY tote bag drinking vinegar cronut adaptogen squid fanny pack vaporware.
@@ -53,8 +48,8 @@ export function Footer() {
 												<svg
 													fill="none"
 													stroke="currentColor"
-													stroke-linecap="round"
-													stroke-linejoin="round"
+													strokeLinecap="round"
+													strokeLinejoin="round"
 													strokeWidth="2"
 													className="h-5 w-5"
 													viewBox="0 0 24 24"
@@ -66,8 +61,8 @@ export function Footer() {
 												<svg
 													fill="none"
 													stroke="currentColor"
-													stroke-linecap="round"
-													stroke-linejoin="round"
+													strokeLinecap="round"
+													strokeLinejoin="round"
 													strokeWidth="2"
 													className="h-5 w-5"
 													viewBox="0 0 24 24"
@@ -79,8 +74,8 @@ export function Footer() {
 												<svg
 													fill="none"
 													stroke="currentColor"
-													stroke-linecap="round"
-													stroke-linejoin="round"
+													strokeLinecap="round"
+													strokeLinejoin="round"
 													strokeWidth="2"
 													className="h-5 w-5"
 													viewBox="0 0 24 24"
@@ -92,13 +87,19 @@ export function Footer() {
 									</div>
 								</div>
 								<div className="flex h-full w-44 flex-col items-center text-center">
-									<img
-										alt="team"
-										className="mb-4 h-56 w-full flex-shrink-0 rounded-lg object-cover object-center"
-										src="https://dummyimage.com/200x150"
+									<Image
+										className="h-full w-40 rounded-md"
+										quality={20}
+										src={"/person2.jpg"}
+										alt={"background"}
+										width={150}
+										height={200}
+										placeholder="blur" // "empty" | "blur"
+										blurDataURL="/blur.png"
+										style={{ objectFit: "cover" }}
 									/>
 									<div className="w-full">
-										<h2 className="title-font text-lg font-medium text-gray-900">Alper Kamu</h2>
+										<h2 className=" text-lg font-medium text-gray-900">Alper Kamu</h2>
 										<h3 className="mb-3 text-gray-500">UI Developer</h3>
 										<p className="mb-4">
 											DIY tote bag drinking vinegar cronut adaptogen squid fanny pack vaporware.
@@ -108,8 +109,8 @@ export function Footer() {
 												<svg
 													fill="none"
 													stroke="currentColor"
-													stroke-linecap="round"
-													stroke-linejoin="round"
+													strokeLinecap="round"
+													strokeLinejoin="round"
 													strokeWidth="2"
 													className="h-5 w-5"
 													viewBox="0 0 24 24"
@@ -121,8 +122,8 @@ export function Footer() {
 												<svg
 													fill="none"
 													stroke="currentColor"
-													stroke-linecap="round"
-													stroke-linejoin="round"
+													strokeLinecap="round"
+													strokeLinejoin="round"
 													strokeWidth="2"
 													className="h-5 w-5"
 													viewBox="0 0 24 24"
@@ -134,8 +135,8 @@ export function Footer() {
 												<svg
 													fill="none"
 													stroke="currentColor"
-													stroke-linecap="round"
-													stroke-linejoin="round"
+													strokeLinecap="round"
+													strokeLinejoin="round"
 													strokeWidth="2"
 													className="h-5 w-5"
 													viewBox="0 0 24 24"
@@ -147,13 +148,19 @@ export function Footer() {
 									</div>
 								</div>
 								<div className="flex h-full w-44 flex-col items-center text-center">
-									<img
-										alt="team"
-										className="mb-4 h-56 w-full flex-shrink-0 rounded-lg object-cover object-center"
-										src="https://dummyimage.com/200x150"
+									<Image
+										className="h-full w-40 rounded-md"
+										quality={20}
+										src={"/person3.jpg"}
+										alt={"background"}
+										width={150}
+										height={200}
+										placeholder="blur" // "empty" | "blur"
+										blurDataURL="/blur.png"
+										style={{ objectFit: "cover" }}
 									/>
 									<div className="w-full">
-										<h2 className="title-font text-lg font-medium text-gray-900">Alper Kamu</h2>
+										<h2 className=" text-lg font-medium text-gray-900">Alper Kamu</h2>
 										<h3 className="mb-3 text-gray-500">UI Developer</h3>
 										<p className="mb-4">
 											DIY tote bag drinking vinegar cronut adaptogen squid fanny pack vaporware.
@@ -163,8 +170,8 @@ export function Footer() {
 												<svg
 													fill="none"
 													stroke="currentColor"
-													stroke-linecap="round"
-													stroke-linejoin="round"
+													strokeLinecap="round"
+													strokeLinejoin="round"
 													strokeWidth="2"
 													className="h-5 w-5"
 													viewBox="0 0 24 24"
@@ -176,8 +183,8 @@ export function Footer() {
 												<svg
 													fill="none"
 													stroke="currentColor"
-													stroke-linecap="round"
-													stroke-linejoin="round"
+													strokeLinecap="round"
+													strokeLinejoin="round"
 													strokeWidth="2"
 													className="h-5 w-5"
 													viewBox="0 0 24 24"
@@ -189,8 +196,8 @@ export function Footer() {
 												<svg
 													fill="none"
 													stroke="currentColor"
-													stroke-linecap="round"
-													stroke-linejoin="round"
+													strokeLinecap="round"
+													strokeLinejoin="round"
 													strokeWidth="2"
 													className="h-5 w-5"
 													viewBox="0 0 24 24"
@@ -202,13 +209,19 @@ export function Footer() {
 									</div>
 								</div>
 								<div className="flex h-full w-44 flex-col items-center text-center">
-									<img
-										alt="team"
-										className="mb-4 h-56 w-full flex-shrink-0 rounded-lg object-cover object-center"
-										src="https://dummyimage.com/200x150"
+									<Image
+										className="h-full w-40 rounded-md"
+										quality={20}
+										src={"/person4.jpg"}
+										alt={"background"}
+										width={150}
+										height={200}
+										placeholder="blur" // "empty" | "blur"
+										blurDataURL="/blur.png"
+										style={{ objectFit: "cover" }}
 									/>
 									<div className="w-full">
-										<h2 className="title-font text-lg font-medium text-gray-900">Alper Kamu</h2>
+										<h2 className=" text-lg font-medium text-gray-900">Alper Kamu</h2>
 										<h3 className="mb-3 text-gray-500">UI Developer</h3>
 										<p className="mb-4">
 											DIY tote bag drinking vinegar cronut adaptogen squid fanny pack vaporware.
@@ -218,8 +231,8 @@ export function Footer() {
 												<svg
 													fill="none"
 													stroke="currentColor"
-													stroke-linecap="round"
-													stroke-linejoin="round"
+													strokeLinecap="round"
+													strokeLinejoin="round"
 													strokeWidth="2"
 													className="h-5 w-5"
 													viewBox="0 0 24 24"
@@ -231,8 +244,8 @@ export function Footer() {
 												<svg
 													fill="none"
 													stroke="currentColor"
-													stroke-linecap="round"
-													stroke-linejoin="round"
+													strokeLinecap="round"
+													strokeLinejoin="round"
 													strokeWidth="2"
 													className="h-5 w-5"
 													viewBox="0 0 24 24"
@@ -244,8 +257,8 @@ export function Footer() {
 												<svg
 													fill="none"
 													stroke="currentColor"
-													stroke-linecap="round"
-													stroke-linejoin="round"
+													strokeLinecap="round"
+													strokeLinejoin="round"
 													strokeWidth="2"
 													className="h-5 w-5"
 													viewBox="0 0 24 24"
@@ -260,9 +273,7 @@ export function Footer() {
 						</div>
 					</section>
 					<div className="w-full px-4 md:w-1/2 lg:w-1/6">
-						<h2 className="title-font mb-3 text-sm font-medium tracking-widest text-gray-900">
-							SUBSCRIBE
-						</h2>
+						<h2 className=" mb-3 text-sm font-medium tracking-widest text-gray-900">SUBSCRIBE</h2>
 						<div className="flex flex-wrap items-end justify-center md:flex-nowrap md:justify-start lg:flex-wrap xl:flex-nowrap">
 							<p className="mt-2 text-center text-sm text-gray-500 md:text-left">
 								Bitters chicharrones fanny pack

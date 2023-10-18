@@ -11,10 +11,10 @@ const ProductImg = ({ product, fit }: Props) => {
 	if (!product) return null;
 	const { title, images } = product;
 	return (
-		<div className="overflow-hidden">
+		<div className="relative overflow-hidden rounded-xl ">
 			{images?.data[0] && (
 				<Image
-					className="relative h-max transition-all delay-100 duration-300 ease-in-out w-80 hover:scale-125"
+					className="relative  w-full transition-all delay-100 duration-300 ease-in-out hover:scale-125 hover:opacity-80 "
 					quality={20}
 					placeholder="blur" // "empty" | "blur"
 					blurDataURL="/blur.png"

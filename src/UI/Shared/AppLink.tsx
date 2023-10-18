@@ -11,7 +11,7 @@ type Props<T extends string> = {
 };
 
 const AppLink = <T extends string>({ children, route }: Props<T>) => (
-	<Link className={clsx("relative hover:font-bold flex flex-col justify-center items-center")} href={route} >
+	<Link className={clsx("relative  flex flex-col items-center justify-center")} href={route}>
 		{children}
 	</Link>
 );

@@ -34,7 +34,7 @@ const ProductPage = async ({
 
 	return (
 		<>
-			<SelectSortProducts searchParams={searchParams} />
+			<SelectSortProducts searchParams={searchParams} basePath="/products"/>
 			<ProductList header="Products list" testId="products-list">
 				{resp.products?.data.map((item) => {
 					if (!item.attributes) return null;
