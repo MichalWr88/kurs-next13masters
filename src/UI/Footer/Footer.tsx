@@ -6,7 +6,7 @@ export function Footer() {
 	return (
 		<footer className="body-font text-gray-600">
 			<div className="container mx-auto px-5 py-24">
-				<div className=" flex flex-wrap md:flex-nowrap justify-center">
+				<div className=" flex flex-wrap justify-center md:flex-nowrap">
 					<div className="w-full px-4 md:w-1/2 lg:w-1/6">
 						<h2 className=" mb-3 text-center text-xl font-bold tracking-widest text-brand-color-2 ">
 							CATEGORIES
@@ -23,8 +23,8 @@ export function Footer() {
 									farm-to-table. Franzen you probably heard of them.
 								</p>
 							</div>
-							<div className="grid  md:grid-cols-4 grid-cols-1 gap-4 items-center">
-								<div className="flex h-full  flex-col items-center text-center w-full">
+							<div className="grid  grid-cols-1 items-center gap-4 md:grid-cols-4">
+								<div className="flex h-full  w-full flex-col items-center text-center">
 									<Image
 										className="h-full w-40 rounded-md"
 										quality={20}
