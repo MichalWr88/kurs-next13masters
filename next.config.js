@@ -21,8 +21,8 @@ const nextConfig = {
 	},
 	experimental: {
 		typedRoutes: true,
-		mdxRs:true,
-		serverActions:true
+		mdxRs: true,
+		serverActions: true,
 	},
 	images: {
 		domains: [
@@ -30,10 +30,10 @@ const nextConfig = {
 			"naszsklep-api.vercel.app",
 			"localhost",
 			"kurs-next13masters.vercel.app",
-      "rv19.mikr.us:30291",
-      "strapi.cytr.us"
+			"rv19.mikr.us:30291",
+			"strapi.cytr.us",
 		],
 	},
 };
-
-module.exports = nextConfig;
+const withMDX = require("@next/mdx")();
+module.exports = withMDX(nextConfig);
