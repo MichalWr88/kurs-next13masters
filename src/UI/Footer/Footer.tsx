@@ -1,6 +1,7 @@
 import Image from "next/image";
 import React from "react";
 import NavList from "../Navigation/NavList";
+import AppLink from "../Shared/AppLink";
 
 export function Footer() {
 	return (
@@ -285,6 +286,13 @@ export function Footer() {
 			</div>
 			<div className="bg-gray-100">
 				<div className="container mx-auto flex flex-col items-center px-5 py-6 sm:flex-row">
+					<span className="ml-3 text-sm">2023 Michał Maleszewski</span>
+					<AppLink route="/rules" hover>
+						<span className="ml-3 text-sm">Terms of Use</span>
+					</AppLink>
+					<AppLink route="/policy" hover>
+						<span className="ml-3 text-sm">Privacy Notice</span>
+					</AppLink>
 					<span className="mt-4 inline-flex justify-center sm:ml-auto sm:mt-0 sm:justify-start">
 						<a className="text-gray-500">
 							<svg

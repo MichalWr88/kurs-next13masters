@@ -26,6 +26,7 @@ const documents = {
     "query ProductReviews($id: ID!) {\n  product(id: $id) {\n    data {\n      attributes {\n        reviews {\n          data {\n            ...ReviewData\n          }\n        }\n      }\n    }\n  }\n}": types.ProductReviewsDocument,
     "query ProductsGetList($page: Int!, $pageSize: Int!, $filters: ProductFiltersInput, $sort: [String]) {\n  products(\n    pagination: {page: $page, pageSize: $pageSize}\n    filters: $filters\n    sort: $sort\n  ) {\n    meta {\n      pagination {\n        ...PaginationData\n      }\n    }\n    data {\n      attributes {\n        ...ProductDataWithCategories\n      }\n    }\n  }\n}\n\nquery ProductsGetCountList {\n  products {\n    meta {\n      pagination {\n        ...PaginationData\n      }\n    }\n  }\n}\n\nquery ProductsGetCountListByCategorySlug($slug: String!) {\n  products(filters: {categories: {slug: {eq: $slug}}}) {\n    meta {\n      pagination {\n        total\n      }\n    }\n  }\n}\n\nquery ProductsGetCountListByCollectionSlug($slug: String!) {\n  products(filters: {collections: {slug: {eq: $slug}}}) {\n    meta {\n      pagination {\n        total\n      }\n    }\n  }\n}": types.ProductsGetListDocument,
     "mutation ReviewCreate($headline: String!, $name: String!, $email: String!, $content: String!, $rating: Int!, $product: ID!, $publishedAt: DateTime!) {\n  createReview(\n    data: {publishedAt: $publishedAt, headline: $headline, name: $name, email: $email, content: $content, rating: $rating, product: $product}\n  ) {\n    data {\n      ...ReviewData\n    }\n  }\n}\n\nfragment ReviewData on ReviewEntity {\n  id\n  attributes {\n    createdAt\n    headline\n    name\n    email\n    content\n    rating\n  }\n}": types.ReviewCreateDocument,
+    "query StaticDocumentsGetList {\n  staticDocuments {\n    data {\n      attributes {\n        name\n        desc\n        updatedAt\n      }\n    }\n  }\n}": types.StaticDocumentsGetListDocument,
     "fragment PaginationData on Pagination {\n  total\n  page\n  pageSize\n  pageCount\n}\n\nfragment ImagesData on UploadFileEntityResponse {\n  data {\n    attributes {\n      url\n      width\n      height\n    }\n  }\n}": types.PaginationDataFragmentDoc,
 };
 
@@ -77,6 +78,10 @@ export function graphql(source: "query ProductsGetList($page: Int!, $pageSize: I
  * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
 export function graphql(source: "mutation ReviewCreate($headline: String!, $name: String!, $email: String!, $content: String!, $rating: Int!, $product: ID!, $publishedAt: DateTime!) {\n  createReview(\n    data: {publishedAt: $publishedAt, headline: $headline, name: $name, email: $email, content: $content, rating: $rating, product: $product}\n  ) {\n    data {\n      ...ReviewData\n    }\n  }\n}\n\nfragment ReviewData on ReviewEntity {\n  id\n  attributes {\n    createdAt\n    headline\n    name\n    email\n    content\n    rating\n  }\n}"): typeof import('./graphql').ReviewCreateDocument;
+/**
+ * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
+ */
+export function graphql(source: "query StaticDocumentsGetList {\n  staticDocuments {\n    data {\n      attributes {\n        name\n        desc\n        updatedAt\n      }\n    }\n  }\n}"): typeof import('./graphql').StaticDocumentsGetListDocument;
 /**
  * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */

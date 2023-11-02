@@ -274,7 +274,7 @@ export type FloatFilterInput = {
   startsWith?: InputMaybe<Scalars['Float']['input']>;
 };
 
-export type GenericMorph = Category | Collection | Filling | I18NLocale | Order | OrderItem | Product | ProductVariant | Review | Size | UploadFile | UploadFolder | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsUser;
+export type GenericMorph = Category | Collection | Filling | I18NLocale | Order | OrderItem | Product | ProductVariant | Review | Size | StaticDocument | UploadFile | UploadFolder | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsUser;
 
 export type I18NLocale = {
   code: Maybe<Scalars['String']['output']>;
@@ -397,6 +397,7 @@ export type Mutation = {
   createProductVariant: Maybe<ProductVariantEntityResponse>;
   createReview: Maybe<ReviewEntityResponse>;
   createSize: Maybe<SizeEntityResponse>;
+  createStaticDocument: Maybe<StaticDocumentEntityResponse>;
   createUploadFile: Maybe<UploadFileEntityResponse>;
   createUploadFolder: Maybe<UploadFolderEntityResponse>;
   /** Create a new role */
@@ -412,6 +413,7 @@ export type Mutation = {
   deleteProductVariant: Maybe<ProductVariantEntityResponse>;
   deleteReview: Maybe<ReviewEntityResponse>;
   deleteSize: Maybe<SizeEntityResponse>;
+  deleteStaticDocument: Maybe<StaticDocumentEntityResponse>;
   deleteUploadFile: Maybe<UploadFileEntityResponse>;
   deleteUploadFolder: Maybe<UploadFolderEntityResponse>;
   /** Delete an existing role */
@@ -439,6 +441,7 @@ export type Mutation = {
   updateProductVariant: Maybe<ProductVariantEntityResponse>;
   updateReview: Maybe<ReviewEntityResponse>;
   updateSize: Maybe<SizeEntityResponse>;
+  updateStaticDocument: Maybe<StaticDocumentEntityResponse>;
   updateUploadFile: Maybe<UploadFileEntityResponse>;
   updateUploadFolder: Maybe<UploadFolderEntityResponse>;
   /** Update an existing role */
@@ -517,6 +520,11 @@ export type MutationCreateSizeArgs = {
 };
 
 
+export type MutationCreateStaticDocumentArgs = {
+  data: StaticDocumentInput;
+};
+
+
 export type MutationCreateUploadFileArgs = {
   data: UploadFileInput;
 };
@@ -580,6 +588,11 @@ export type MutationDeleteReviewArgs = {
 
 
 export type MutationDeleteSizeArgs = {
+  id: Scalars['ID']['input'];
+};
+
+
+export type MutationDeleteStaticDocumentArgs = {
   id: Scalars['ID']['input'];
 };
 
@@ -702,6 +715,12 @@ export type MutationUpdateReviewArgs = {
 
 export type MutationUpdateSizeArgs = {
   data: SizeInput;
+  id: Scalars['ID']['input'];
+};
+
+
+export type MutationUpdateStaticDocumentArgs = {
+  data: StaticDocumentInput;
   id: Scalars['ID']['input'];
 };
 
@@ -1087,6 +1106,8 @@ export type Query = {
   reviews: Maybe<ReviewEntityResponseCollection>;
   size: Maybe<SizeEntityResponse>;
   sizes: Maybe<SizeEntityResponseCollection>;
+  staticDocument: Maybe<StaticDocumentEntityResponse>;
+  staticDocuments: Maybe<StaticDocumentEntityResponseCollection>;
   uploadFile: Maybe<UploadFileEntityResponse>;
   uploadFiles: Maybe<UploadFileEntityResponseCollection>;
   uploadFolder: Maybe<UploadFolderEntityResponse>;
@@ -1225,6 +1246,19 @@ export type QuerySizeArgs = {
 
 export type QuerySizesArgs = {
   filters?: InputMaybe<SizeFiltersInput>;
+  pagination?: InputMaybe<PaginationArg>;
+  publicationState?: InputMaybe<PublicationState>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+};
+
+
+export type QueryStaticDocumentArgs = {
+  id?: InputMaybe<Scalars['ID']['input']>;
+};
+
+
+export type QueryStaticDocumentsArgs = {
+  filters?: InputMaybe<StaticDocumentFiltersInput>;
   pagination?: InputMaybe<PaginationArg>;
   publicationState?: InputMaybe<PublicationState>;
   sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -1379,6 +1413,46 @@ export type SizeInput = {
   name?: InputMaybe<Scalars['String']['input']>;
   publishedAt?: InputMaybe<Scalars['DateTime']['input']>;
   slug?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type StaticDocument = {
+  createdAt: Maybe<Scalars['DateTime']['output']>;
+  desc: Scalars['String']['output'];
+  name: Scalars['String']['output'];
+  publishedAt: Maybe<Scalars['DateTime']['output']>;
+  updatedAt: Maybe<Scalars['DateTime']['output']>;
+};
+
+export type StaticDocumentEntity = {
+  attributes: Maybe<StaticDocument>;
+  id: Maybe<Scalars['ID']['output']>;
+};
+
+export type StaticDocumentEntityResponse = {
+  data: Maybe<StaticDocumentEntity>;
+};
+
+export type StaticDocumentEntityResponseCollection = {
+  data: Array<StaticDocumentEntity>;
+  meta: ResponseCollectionMeta;
+};
+
+export type StaticDocumentFiltersInput = {
+  and?: InputMaybe<Array<InputMaybe<StaticDocumentFiltersInput>>>;
+  createdAt?: InputMaybe<DateTimeFilterInput>;
+  desc?: InputMaybe<StringFilterInput>;
+  id?: InputMaybe<IdFilterInput>;
+  name?: InputMaybe<StringFilterInput>;
+  not?: InputMaybe<StaticDocumentFiltersInput>;
+  or?: InputMaybe<Array<InputMaybe<StaticDocumentFiltersInput>>>;
+  publishedAt?: InputMaybe<DateTimeFilterInput>;
+  updatedAt?: InputMaybe<DateTimeFilterInput>;
+};
+
+export type StaticDocumentInput = {
+  desc?: InputMaybe<Scalars['String']['input']>;
+  name?: InputMaybe<Scalars['String']['input']>;
+  publishedAt?: InputMaybe<Scalars['DateTime']['input']>;
 };
 
 export type StringFilterInput = {
@@ -1893,6 +1967,11 @@ export type ReviewCreateMutationVariables = Exact<{
 export type ReviewCreateMutation = { createReview: { data: { id: string | null, attributes: { createdAt: string | null, headline: string, name: string, email: string | null, content: string, rating: number } | null } | null } | null };
 
 export type ReviewDataFragment = { id: string | null, attributes: { createdAt: string | null, headline: string, name: string, email: string | null, content: string, rating: number } | null };
+
+export type StaticDocumentsGetListQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type StaticDocumentsGetListQuery = { staticDocuments: { data: Array<{ attributes: { name: string, desc: string, updatedAt: string | null } | null }> } | null };
 
 export type PaginationDataFragment = { total: number, page: number, pageSize: number, pageCount: number };
 
@@ -2540,3 +2619,16 @@ export const ReviewCreateDocument = new TypedDocumentString(`
     rating
   }
 }`) as unknown as TypedDocumentString<ReviewCreateMutation, ReviewCreateMutationVariables>;
+export const StaticDocumentsGetListDocument = new TypedDocumentString(`
+    query StaticDocumentsGetList {
+  staticDocuments {
+    data {
+      attributes {
+        name
+        desc
+        updatedAt
+      }
+    }
+  }
+}
+    `) as unknown as TypedDocumentString<StaticDocumentsGetListQuery, StaticDocumentsGetListQueryVariables>;

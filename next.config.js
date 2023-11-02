@@ -24,6 +24,7 @@ const nextConfig = {
 		mdxRs: true,
 		serverActions: true,
 	},
+	pageExtensions: ['js', 'jsx', 'mdx', 'ts', 'tsx'],
 	images: {
 		domains: [
 			"fakestoreapi.com",
