@@ -26,7 +26,7 @@
 		"no-func-assign": "warn",
 		"no-var": "error",
 		"no-cond-assign": "error",
-		"arrow-body-style": "warn",
+		"arrow-body-style": "off",
 		"no-constant-condition": "error",
 		"no-dupe-args": "error",
 		"no-setter-return": "error",

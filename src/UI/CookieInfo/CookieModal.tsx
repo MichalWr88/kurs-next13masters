@@ -17,26 +17,7 @@ const CookieModal = () => {
 						<h5 className="text-xl font-medium leading-normal text-neutral-800 " id="exampleModalLabel">
 							Hello, would you like a cookie ?
 						</h5>
-
-						<button
-							type="button"
-							className="box-content rounded-none border-none hover:no-underline hover:opacity-75 focus:opacity-100 focus:shadow-none focus:outline-none"
-							data-te-modal-dismiss
-							aria-label="Close"
-						>
-							<svg
-								xmlns="http://www.w3.org/2000/svg"
-								fill="none"
-								viewBox="0 0 24 24"
-								stroke-width="1.5"
-								stroke="currentColor"
-								className="h-6 w-6"
-							>
-								<path strokeLinecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
-							</svg>
-						</button>
 					</div>
-
 					<div className="relative flex flex-auto flex-col  items-start p-4" data-te-modal-body-ref>
 						Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
 						labore et dolore magna aliqua. Ut enim ad minim veniam quis exercitation.
