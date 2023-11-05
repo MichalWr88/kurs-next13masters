@@ -1,9 +1,9 @@
 import React from "react";
+import FacebookIcon from "../Icons/FacebookIcon";
+import TwitterIcon from "../Icons/TwitterIcon";
 import NavList from "../Navigation/NavList";
 import AppLink from "../Shared/AppLink";
 import TeamLIst from "./TeamLIst";
-import FacebookIcon from "../Icons/FacebookIcon";
-import TwitterIcon from "../Icons/TwitterIcon";
 
 export function Footer() {
 	return (
