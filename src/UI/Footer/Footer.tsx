@@ -1,5 +1,7 @@
 import React from "react";
 import FacebookIcon from "../Icons/FacebookIcon";
+import InstagramIcon from "../Icons/InstagramIcon";
+import LinkedinIcon from "../Icons/LinkedinIcon";
 import TwitterIcon from "../Icons/TwitterIcon";
 import NavList from "../Navigation/NavList";
 import AppLink from "../Shared/AppLink";
@@ -38,7 +40,7 @@ export function Footer() {
 					<AppLink route="/policy" hover>
 						<span className="ml-3 text-sm">Privacy Notice</span>
 					</AppLink>
-					<span className="mt-4 inline-flex justify-center text-gray-500 sm:ml-auto sm:mt-0 sm:justify-start">
+					<span className="flex mt-4 justify-center gap-4 text-gray-500 sm:ml-auto sm:mt-0 sm:justify-start">
 						<AppLink hover route="/">
 							<FacebookIcon stroke="currentColor" fill="currentColor" />
 						</AppLink>
@@ -46,38 +48,12 @@ export function Footer() {
 						<AppLink hover route="/">
 							<TwitterIcon stroke="currentColor" fill="currentColor" />
 						</AppLink>
-
-						<a className="ml-3 text-gray-500">
-							<svg
-								fill="none"
-								stroke="currentColor"
-								strokeLinecap="round"
-								strokeLinejoin="round"
-								strokeWidth="2"
-								className="h-5 w-5"
-								viewBox="0 0 24 24"
-							>
-								<rect width="20" height="20" x="2" y="2" rx="5" ry="5"></rect>
-								<path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37zm1.5-4.87h.01"></path>
-							</svg>
-						</a>
-						<a className="ml-3 text-gray-500">
-							<svg
-								fill="currentColor"
-								stroke="currentColor"
-								strokeLinecap="round"
-								strokeLinejoin="round"
-								strokeWidth="0"
-								className="h-5 w-5"
-								viewBox="0 0 24 24"
-							>
-								<path
-									stroke="none"
-									d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"
-								></path>
-								<circle cx="4" cy="4" r="2" stroke="none"></circle>
-							</svg>
-						</a>
+						<AppLink hover route="/">
+							<InstagramIcon stroke="currentColor" />
+						</AppLink>
+						<AppLink hover route="/">
+							<LinkedinIcon stroke="currentColor" fill="currentColor" />
+						</AppLink>
 					</span>
 				</div>
 			</div>

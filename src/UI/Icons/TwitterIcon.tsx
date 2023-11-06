@@ -1,10 +1,10 @@
 import { type IconProps } from './IconModel'
 
-const TwitterIcon = (props: IconProps) => {
+const TwitterIcon = ({ fill = "none", stroke = "currentColor" }: IconProps) => {
   return (
     <svg
-    fill={props.fill}
-    stroke={props.stroke}
+    fill={fill}
+    stroke={stroke}
     strokeLinejoin="round"
     strokeWidth="2"
     className="h-5 w-5"
