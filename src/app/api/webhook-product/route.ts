@@ -1,6 +1,6 @@
 import { revalidatePath } from "next/cache";
 import { type NextRequest, NextResponse } from "next/server";
-import { StaticDocument, type Product } from "@/gql/graphql";
+import { type StaticDocument, type Product } from "@/gql/graphql";
 type RespWebhook =
 	| {
 			event: "entry.update";
