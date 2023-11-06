@@ -37,7 +37,7 @@ export function Footer() {
 					<AppLink route="/rules" hover>
 						<span className="ml-3 text-sm">Terms of Use</span>
 					</AppLink>
-					<AppLink route="/policy" hover>
+					<AppLink route="/private-policy" hover>
 						<span className="ml-3 text-sm">Privacy Notice</span>
 					</AppLink>
 					<span className="flex mt-4 justify-center gap-4 text-gray-500 sm:ml-auto sm:mt-0 sm:justify-start">

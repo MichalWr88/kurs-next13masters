@@ -24,7 +24,7 @@ const CookieModal = () => {
 						<AppLink route="/rules" hover>
 							<span className="ml-3 text-sm text-brand-color-3">Terms of Use</span>
 						</AppLink>
-						<AppLink route="/policy" hover>
+						<AppLink route="/private-policy" hover>
 							<span className="ml-3 text-sm text-brand-color-3">Privacy Notice</span>
 						</AppLink>
 					</div>
