@@ -1,7 +1,5 @@
 import { type IconProps } from './IconModel'
 
-
-
 const TwitterIcon = (props: IconProps) => {
   return (
     <svg
