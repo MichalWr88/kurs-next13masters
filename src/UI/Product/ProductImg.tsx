@@ -1,10 +1,9 @@
-import Image from "next/image";
-import React from "react";
 import { type ProductDataFragment } from "@/gql/graphql";
+import MyImage, { type ImgFit } from "./MyImage";
 
 type Props = {
 	product?: ProductDataFragment | null;
-	fit?: "fill" | "contain" | "cover" | "none" | "scale-down";
+	fit?: ImgFit;
 };
 
 const ProductImg = ({ product, fit }: Props) => {
@@ -13,17 +12,13 @@ const ProductImg = ({ product, fit }: Props) => {
 	return (
 		<div className="relative min-h-[200px] overflow-hidden rounded-xl">
 			{images?.data[0] && (
-				<Image
-					className="relative  w-full transition-all delay-100 duration-300 ease-in-out hover:scale-125 hover:opacity-80 "
+				<MyImage
+					height={images?.data[0].attributes?.height}
+					width={images?.data[0].attributes?.width}
 					quality={20}
-					placeholder="blur" // "empty" | "blur"
-					blurDataURL="/blur.png"
-					data-testid="mePic"
-					src={`${process.env.GRAPHQL_URL}${images?.data[0].attributes?.url}` || ""}
-					alt={title}
-					width={images?.data[0].attributes?.width ?? 200}
-					height={images?.data[0].attributes?.height ?? 200}
-					style={{ objectFit: fit, maxWidth: "100%", height: "auto" }}
+					url={images?.data[0].attributes?.url}
+					title={title}
+					fit={fit}
 				/>
 			)}
 		</div>

@@ -2,6 +2,7 @@ import { cookies } from "next/headers";
 import React from "react";
 import ItemProductQuantity from "@/UI/Buttons/ItemProductQuantity";
 import RemoveCartItem from "@/UI/Buttons/RemoveCartItem";
+import MyImage from "@/UI/Product/MyImage";
 import { getCartBySlug } from "@/api/graphQL/graphQLProvider";
 
 const CartPage = async () => {
@@ -26,7 +27,20 @@ const CartPage = async () => {
 
 						return (
 							<tr key={item.id} className="h-14">
-								<td className="border text-center">{item.attributes?.product?.data?.attributes?.title}</td>
+								<td className="border text-center ">
+									<div className="flex  w-full justify-center">
+										<div className="flex  w-20 justify-center p-2">
+											<MyImage
+												width={item.attributes?.product?.data?.attributes?.images?.data[0]?.attributes?.width}
+												height={item.attributes?.product?.data?.attributes?.images?.data[0]?.attributes?.height}
+												title={item.attributes?.product?.data?.attributes?.title}
+												url={item.attributes?.product?.data?.attributes?.images?.data[0]?.attributes?.url}
+												quality={20}
+											/>
+										</div>
+									</div>
+									{item.attributes?.product?.data?.attributes?.title}
+								</td>
 								<td className="border text-center">
 									<span className="px-1">$</span>
 									{item.attributes?.product?.data?.attributes?.price?.toString()}
