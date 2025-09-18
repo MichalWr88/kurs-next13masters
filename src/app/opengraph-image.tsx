@@ -1,6 +1,7 @@
-import { ImageResponse } from "next/server";
 // import { executeGraphql } from "@/api/graphQL/graphQLProvider";
 // import { ProductGetBySlugDocument } from "@/gql/graphql";
+
+import { ImageResponse } from "next/og";
 
 export const runtime = "edge";
 

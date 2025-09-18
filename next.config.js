@@ -24,7 +24,7 @@ const nextConfig = {
 		mdxRs: true,
 		serverActions: true,
 	},
-	pageExtensions: ['js', 'jsx', 'mdx', 'ts', 'tsx'],
+	pageExtensions: ["js", "jsx", "mdx", "ts", "tsx"],
 	images: {
 		domains: [
 			"fakestoreapi.com",
@@ -34,6 +34,7 @@ const nextConfig = {
 			"rv19.mikr.us:30291",
 			"strapi.cytr.us",
 		],
+		qualities: [20, 75, 100],
 	},
 };
 const withMDX = require("@next/mdx")();
