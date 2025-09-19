@@ -6,6 +6,7 @@ import type { UrlObject } from "url";
 interface Props<T extends string> extends Omit<LinkProps<string>, "href"> {
 	exact?: boolean;
 	href: Route<T> | UrlObject;
+	children: React.ReactNode;
 }
 
 const getIsActive = <T extends string>({
