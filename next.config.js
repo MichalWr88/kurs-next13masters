@@ -27,15 +27,6 @@ const nextConfig = {
 			bodySizeLimit: "2mb",
 		},
 	},
-	// Skip TypeScript checks during build to avoid React 19 type issues
-	typescript: {
-		ignoreBuildErrors: true,
-	},
-	// Skip ESLint during build for quicker deployment
-	eslint: {
-		ignoreDuringBuilds: true,
-	},
-
 
 	pageExtensions: ["js", "jsx", "mdx", "ts", "tsx"],
 	images: {
