@@ -21,7 +21,7 @@ const nextConfig = {
 	},
 	// typedRoutes is now a top-level option in Next.js 15
 	// typedRoutes: true,
-		serverActions: true,
+		// serverActions: true,
 	experimental: {
 		mdxRs: true,
 		// serverActions: {
