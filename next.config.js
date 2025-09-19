@@ -35,7 +35,7 @@ const nextConfig = {
 	eslint: {
 		ignoreDuringBuilds: true,
 	},
-	output: "standalone",
+
 
 	pageExtensions: ["js", "jsx", "mdx", "ts", "tsx"],
 	images: {
