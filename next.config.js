@@ -20,12 +20,14 @@ const nextConfig = {
 		];
 	},
 	// typedRoutes is now a top-level option in Next.js 15
-	typedRoutes: true,
+	// typedRoutes: true,
+	
 	experimental: {
+		serverActions: true,
 		mdxRs: true,
-		serverActions: {
-			bodySizeLimit: "2mb",
-		},
+		// serverActions: {
+		// 	bodySizeLimit: "2mb",
+		// },
 	},
 
 	pageExtensions: ["js", "jsx", "mdx", "ts", "tsx"],
