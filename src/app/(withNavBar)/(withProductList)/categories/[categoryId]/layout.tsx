@@ -14,7 +14,7 @@ export default async function RootLayout({
 	children,
 }: {
 	children: React.ReactNode;
-	params: { categoryId: string };
+	params: Promise<{ categoryId: string }>;
 }) {
 	// eslint-disable-next-line @typescript-eslint/no-unsafe-argument
 

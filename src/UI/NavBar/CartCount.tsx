@@ -3,7 +3,8 @@ import { getCartBySlug } from "@/api/graphQL/graphQLProvider";
 import AppLink from "../Shared/AppLink";
 
 const CartCount = async () => {
-	const cartId = cookies().get("cartId")?.value;
+	const cookieStore = await cookies();
+	const cartId = cookieStore.get("cartId")?.value;
 
 	const cart = await getCartBySlug(cartId);
 	const quantity = cart?.attributes?.order_items?.data.length ?? 0;

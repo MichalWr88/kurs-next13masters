@@ -2,8 +2,9 @@ import { cookies } from "next/headers";
 import AppLink from "../Shared/AppLink";
 import CookieModalForm from "./CookieModalForm";
 
-const CookieModal = () => {
-	const topShopCookie = cookies().get("topShopCookie")?.value;
+const CookieModal = async () => {
+	const cookieStore = await cookies();
+	const topShopCookie = cookieStore.get("topShopCookie")?.value;
 
 	if (topShopCookie) {
 		return null;

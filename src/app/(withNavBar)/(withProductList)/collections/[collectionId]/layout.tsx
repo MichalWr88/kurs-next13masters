@@ -6,12 +6,12 @@ import {
 	ProductsGetCountListByCollectionSlugDocument,
 } from "@/gql/graphql";
 
-
 export const generateMetadata = async ({
-	params: { collectionId },
+	params,
 }: {
-	params: { collectionId: string };
+	params: Promise<{ collectionId: string }>;
 }) => {
+	const { collectionId } = await params;
 	const collectionResp = await executeGraphql({
 		query: CollectionGetBySlugDocument,
 		variables: {
@@ -29,19 +29,20 @@ export default async function RootLayout({
 	params,
 }: {
 	children: React.ReactNode;
-	params: { collectionId: string };
+	params: Promise<{ collectionId: string }>;
 }) {
+	const { collectionId } = await params;
 	// eslint-disable-next-line @typescript-eslint/no-unsafe-argument
 	const resp = await executeGraphql({
 		query: ProductsGetCountListByCollectionSlugDocument,
 		variables: {
-			slug: params.collectionId,
+			slug: collectionId,
 		},
 	});
 	const collectionResp = await executeGraphql({
 		query: CollectionGetBySlugDocument,
 		variables: {
-			slug: params.collectionId,
+			slug: collectionId,
 		},
 	});
 	if (!resp.products) {
@@ -52,7 +53,6 @@ export default async function RootLayout({
 		<>
 			<CollectionsHeader collection={collectionResp.collections?.data[0]?.attributes} />
 			{children}
-
 		</>
 	);
 }

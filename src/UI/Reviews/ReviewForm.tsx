@@ -3,19 +3,17 @@ import { addReviewToProduct } from "@/api/graphQL/ReviewProvider";
 import styles from "./ReviewFrom.module.scss";
 
 const ReviewForm = ({ id }: { id: number }) => {
-
-
-	const sendReview = async (formData: FormData) => {
+	const sendReview = async (formData: FormData): Promise<void> => {
 		"use server";
 
 		const review = {
 			headline: formData.get("headline")?.toString() ?? "",
-			email: formData.get("email")?.toString() ?? "",
 			name: formData.get("name")?.toString() ?? "",
+			email: formData.get("email")?.toString() ?? "",
 			rating: Number(formData.get("rating")) ?? "",
 			content: formData.get("content")?.toString() ?? "",
 		};
-		return addReviewToProduct({ ...review, productId: id });
+		await addReviewToProduct({ ...review, productId: id });
 	};
 
 	return (
@@ -96,7 +94,7 @@ const ReviewForm = ({ id }: { id: number }) => {
 						Review content
 					</label>
 					<textarea
-					typeof="text"
+						typeof="text"
 						id="message"
 						name="content"
 						className="h-32 w-full resize-none rounded border border-gray-300 bg-white px-3 py-1 text-base leading-6 text-gray-700 outline-none transition-colors duration-200 ease-in-out focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200"

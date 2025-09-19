@@ -1,6 +1,6 @@
 "use client";
-import { experimental_useOptimistic as useOptimistic } from "react";
-import { experimental_useFormStatus as useFormStatus } from "react-dom";
+import { useOptimistic } from "react";
+import { useFormStatus } from "react-dom";
 import { changeItemQuantity } from "@/app/(withNavBar)/cart/actions";
 
 const maxQuantity = 10;

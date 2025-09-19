@@ -3,7 +3,8 @@ import { cookies } from "next/headers";
 import { createCart, getCartBySlug } from "./graphQL/graphQLProvider";
 
 export const getOrCreateCart = async () => {
-	const cartId = cookies().get("cartId")?.value;
+	const cookieStore = await cookies();
+	const cartId = cookieStore.get("cartId")?.value;
 	if (cartId) {
 		const cart = await getCartBySlug(cartId);
 
@@ -16,6 +17,6 @@ export const getOrCreateCart = async () => {
 	if (!newCart.attributes) {
 		throw new Error("Failed to set cookie for cart");
 	}
-	cookies().set("cartId", newCart.attributes.slug);
+	cookieStore.set("cartId", newCart.attributes.slug);
 	return newCart;
 };

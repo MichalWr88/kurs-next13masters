@@ -9,14 +9,15 @@ import { ProductsGetListDocument } from "@/gql/graphql";
 const CategoriesIdPage = async ({
 	params,
 }: {
-	params: { collectionId: string; pageTakeNumber: string };
+	params: Promise<{ collectionId: string; pageTakeNumber: string }>;
 }) => {
+	const { collectionId, pageTakeNumber } = await params;
 	const resp = await executeGraphql({
 		query: ProductsGetListDocument,
 		variables: {
-			page: Number(params.pageTakeNumber),
+			page: Number(pageTakeNumber),
 			pageSize: 20,
-			filters: { collections: { slug: { eq: params.collectionId } } },
+			filters: { collections: { slug: { eq: collectionId } } },
 		},
 	});
 
@@ -38,8 +39,8 @@ const CategoriesIdPage = async ({
 				})}
 			</ProductList>
 			<RoutePagination
-				basePath={`/collections/${params.collectionId}` as Route}
-				currentPage={Number(params.pageTakeNumber)}
+				basePath={`/collections/${collectionId}` as Route}
+				currentPage={Number(pageTakeNumber)}
 				totalCount={resp.products?.meta.pagination.total ?? 0}
 				pageSize={20}
 			/>

@@ -17,7 +17,8 @@ import {
 import { ProductGetBySlugDocument } from "@/gql/graphql";
 import { changeItemQuantity } from "../../cart/actions";
 
-export const generateMetadata = async ({ params: { slugId } }: { params: { slugId: string } }) => {
+export const generateMetadata = async ({ params }: { params: Promise<{ slugId: string }> }) => {
+	const { slugId } = await params;
 	const resp = await executeGraphql({
 		query: ProductGetBySlugDocument,
 		variables: { slug: slugId },
@@ -28,7 +29,8 @@ export const generateMetadata = async ({ params: { slugId } }: { params: { slugI
 	};
 };
 
-const PageProduct = async ({ params: { slugId } }: { params: { slugId: string } }) => {
+const PageProduct = async ({ params }: { params: Promise<{ slugId: string }> }) => {
+	const { slugId } = await params;
 	const resp = await executeGraphql({
 		query: ProductGetBySlugDocument,
 		variables: { slug: slugId },
@@ -43,7 +45,8 @@ const PageProduct = async ({ params: { slugId } }: { params: { slugId: string } 
 		const cart = await getOrCreateCart();
 		if (!cart.attributes?.slug || !cart.id) return;
 
-		cookies().set("cartId", cart.attributes?.slug, {
+		const cookieStore = await cookies();
+		cookieStore.set("cartId", cart.attributes?.slug, {
 			httpOnly: true,
 			sameSite: "lax",
 			expires: new Date(Date.now() + 1000 * 60 * 60 * 24 * 7),
@@ -66,10 +69,9 @@ const PageProduct = async ({ params: { slugId } }: { params: { slugId: string } 
 		<>
 			<section className="relative flex justify-center">
 				<div className="container flex w-full flex-col items-center justify-center px-5 py-12 md:py-24">
-					<div className="grid grid-cols-1 gap-5 md:grid-cols-2 w-full">
-					
-							<ProductImg product={product} />
-					
+					<div className="grid w-full grid-cols-1 gap-5 md:grid-cols-2">
+						<ProductImg product={product} />
+
 						<div className="px-6">
 							<h1 className="mb-1 text-center font-bold text-gray-900 md:text-3xl">{product.title}</h1>
 							{product.categories?.data.map((cat) => (

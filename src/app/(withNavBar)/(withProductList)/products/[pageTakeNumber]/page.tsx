@@ -14,18 +14,20 @@ export const generateStaticParams = async () => [
 ];
 
 const ProductPage = async ({
-	params: { pageTakeNumber },
+	params,
 	searchParams,
 }: {
-	searchParams: { sortDir: string; sortBy: string };
-	params: { pageTakeNumber: string };
+	searchParams: Promise<{ sortDir: string; sortBy: string }>;
+	params: Promise<{ pageTakeNumber: string }>;
 }) => {
+	const { pageTakeNumber } = await params;
+	const searchParamsData = await searchParams;
 	const resp = await executeGraphql({
 		query: ProductsGetListDocument,
 		variables: {
 			page: Number(pageTakeNumber),
 			pageSize: 20,
-			sort: searchParams.sortBy ? [`${searchParams.sortBy}:DESC`] : undefined,
+			sort: searchParamsData.sortBy ? [`${searchParamsData.sortBy}:DESC`] : undefined,
 		},
 	});
 	if (!resp.products) {
@@ -34,14 +36,18 @@ const ProductPage = async ({
 
 	return (
 		<>
-			<SelectSortProducts searchParams={searchParams} basePath="/products"/>
+			<SelectSortProducts searchParams={searchParamsData} basePath="/products" />
 			<ProductList header="Products list" testId="products-list">
 				{resp.products?.data.map((item) => {
 					if (!item.attributes) return null;
 
 					return (
 						<li key={`product-${item.attributes.slug}`}>
-							<ProductElem product={item.attributes} priceTestId="product-price" ratingTestId="product-rating" />
+							<ProductElem
+								product={item.attributes}
+								priceTestId="product-price"
+								ratingTestId="product-rating"
+							/>
 						</li>
 					);
 				})}

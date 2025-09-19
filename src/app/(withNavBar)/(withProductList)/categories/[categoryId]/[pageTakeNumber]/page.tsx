@@ -7,25 +7,29 @@ import { executeGraphql } from "@/api/graphQL/graphQLProvider";
 import { ProductsGetListDocument } from "@/gql/graphql";
 
 export const generateMetadata = async ({
-	params: { categoryId },
+	params,
 }: {
-	params: { categoryId: string };
-}) => ({
-	title: categoryId,
-	description: categoryId,
-});
+	params: Promise<{ categoryId: string; pageTakeNumber: string }>;
+}) => {
+	const { categoryId } = await params;
+	return {
+		title: categoryId,
+		description: categoryId,
+	};
+};
 
 const CategoriesIdPage = async ({
 	params,
 }: {
-	params: { categoryId: string; pageTakeNumber: string };
+	params: Promise<{ categoryId: string; pageTakeNumber: string }>;
 }) => {
+	const { categoryId, pageTakeNumber } = await params;
 	const resp = await executeGraphql({
 		query: ProductsGetListDocument,
 		variables: {
-			page: Number(params.pageTakeNumber),
+			page: Number(pageTakeNumber),
 			pageSize: 20,
-			filters: { categories: { slug: { eq: params.categoryId } } },
+			filters: { categories: { slug: { eq: categoryId } } },
 		},
 	});
 
@@ -35,7 +39,7 @@ const CategoriesIdPage = async ({
 
 	return (
 		<>
-			<h1>{`Products list ${params.categoryId}`}</h1>
+			<h1>{`Products list ${categoryId}`}</h1>
 
 			<ProductList>
 				{resp.products?.data.map((item) => {
@@ -49,8 +53,8 @@ const CategoriesIdPage = async ({
 				})}
 			</ProductList>
 			<RoutePagination
-				basePath={`/categories/${params.categoryId}` as Route}
-				currentPage={Number(params.pageTakeNumber)}
+				basePath={`/categories/${categoryId}` as Route}
+				currentPage={Number(pageTakeNumber)}
 				totalCount={resp.products?.meta.pagination.total ?? 0}
 				pageSize={20}
 			/>

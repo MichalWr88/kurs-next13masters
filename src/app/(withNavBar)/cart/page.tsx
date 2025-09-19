@@ -6,7 +6,8 @@ import MyImage from "@/UI/Product/MyImage";
 import { getCartBySlug } from "@/api/graphQL/graphQLProvider";
 
 const CartPage = async () => {
-	const cartId = cookies().get("cartId")?.value;
+	const cookieStore = await cookies();
+	const cartId = cookieStore.get("cartId")?.value;
 	if (!cartId) return <div>Cart is empty</div>;
 	const cart = await getCartBySlug(cartId);
 

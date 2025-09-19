@@ -6,6 +6,7 @@
 		"allowJs": true,
 		"skipLibCheck": true,
 		"strict": true,
+		"noImplicitAny": false, // Allow implicit any during React 19 transition
 		"forceConsistentCasingInFileNames": true,
 		"noEmit": true,
 		"esModuleInterop": true,

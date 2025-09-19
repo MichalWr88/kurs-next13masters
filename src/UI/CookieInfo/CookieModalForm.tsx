@@ -5,7 +5,8 @@ const CookieModalForm = () => {
 	const cookieFormAction = async () => {
 		"use server";
 
-		cookies().set("topShopCookie", "true", {
+		const cookieStore = await cookies();
+		cookieStore.set("topShopCookie", "true", {
 			httpOnly: true,
 			sameSite: "lax",
 		});
