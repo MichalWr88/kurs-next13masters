@@ -4,7 +4,7 @@ import AppLink from "@/UI/Shared/AppLink";
 
 type Props = {
 	obj: { updatedAt?: string | null; desc?: string };
-	children: React.ReactNode;
+	children?: React.ReactNode;
 };
 
 const components: MDXComponents | null | undefined = {
